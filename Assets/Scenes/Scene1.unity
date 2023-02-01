@@ -683,6 +683,10 @@ PrefabInstance:
       value: Enemy1
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
+      propertyPath: unitState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: attackPower
       value: 20
       objectReference: {fileID: 0}

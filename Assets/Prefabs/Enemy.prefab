@@ -44,16 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a97b3fe87bffde4a996978c6012c6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: 
+  unitName: 
+  unitState: 1
+  isDead: 0
   maxHp: 0
   currentHp: 0
   maxSp: 0
   currentSp: 0
   level: 0
-  attackPower: 0
+  physicalAttackPower: 0
+  magicAttackPower: 0
   strength: 0
   intelligence: 0
   agility: 0
   luck: 0
-  defense: 0
+  physicalDefense: 0
+  magicDefense: 0
   abilities: []

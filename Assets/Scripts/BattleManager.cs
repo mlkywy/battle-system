@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
-    public List<Friendly> friendlies;
-    public List<Enemy> enemies;
+    List<Unit> allUnits => FindObjectsOfType<Unit>().ToList();
+    List<Friendly> friendlyUnits => allUnits.Where(unit => unit.unitState == 0 && unit.isDead != 1).Cast<Friendly>().ToList();
+    List<Enemy> enemyUnits => allUnits.Where(unit => unit.unitState == 1 && unit.isDead != 1).Cast<Enemy>().ToList();
 
-    private BattleMath battleMath;
+    int currentFriendlyIndex = 0;
+    int currentEnemyIndex = 0;
+
+    BattleMath battleMath = new BattleMath();
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -33,13 +38,13 @@ public class BattleManager : MonoBehaviour
 
     bool TestCheckLists() 
     {
-        if (friendlies.Count == 0 || friendlies == null)
+        if (friendlyUnits.Count == 0 || friendlyUnits == null)
         {
             Debug.Log("Missing friendly units!");
             return false;
         }
 
-        if (enemies.Count == 0 || enemies == null)
+        if (enemyUnits.Count == 0 || enemyUnits == null)
         {
             Debug.Log("Missing enemy units!");
             return false;
@@ -52,11 +57,10 @@ public class BattleManager : MonoBehaviour
     {
         if (TestCheckLists())
         {
-            Unit friendly1 = friendlies[0];
-            Enemy enemy1 = enemies[0];
+            Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
+            Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
-            battleMath = new BattleMath(friendly1, enemy1);
-            int damage = battleMath.CalculatePhysicalAttackDamage();
+            int damage = battleMath.CalculatePhysicalAttackDamage(friendly1, enemy1);
             enemy1.currentHp = enemy1.currentHp - damage;
 
             Debug.Log($"{damage} DAMAGE DEALT TO ENEMY!");
@@ -67,11 +71,10 @@ public class BattleManager : MonoBehaviour
     {
         if (TestCheckLists())
         {
-            Unit friendly1 = friendlies[0];
-            Enemy enemy1 = enemies[0];
+            Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
+            Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
-            battleMath = new BattleMath(enemy1, friendly1);
-            int damage = battleMath.CalculatePhysicalAttackDamage();
+            int damage = battleMath.CalculatePhysicalAttackDamage(enemy1, friendly1);
             friendly1.currentHp = friendly1.currentHp - damage;
 
             Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");
@@ -80,7 +83,7 @@ public class BattleManager : MonoBehaviour
 
     void TestSwitchingScenes()
     {
-        if (friendlies.Count == 0 || friendlies == null)
+        if (friendlyUnits.Count == 0 || friendlyUnits == null)
         {
             Debug.Log("Missing friendly units!");
             return;
@@ -88,7 +91,7 @@ public class BattleManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            foreach (Friendly friendly in friendlies)
+            foreach (Friendly friendly in friendlyUnits)
             {
                 friendly.SaveData();
             }
@@ -98,7 +101,7 @@ public class BattleManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            foreach (Friendly friendly in friendlies)
+            foreach (Friendly friendly in friendlyUnits)
             {
                 friendly.SaveData();
             }

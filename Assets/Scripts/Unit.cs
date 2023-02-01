@@ -10,6 +10,16 @@ public class Unit : MonoBehaviour
     public string unitName;
 
     /// <summary>
+    /// The character's state. (0 - friendly, 1 - enemy)
+    /// </summary>
+    public int unitState;
+
+    /// <summary>
+    /// The character's state. (0 - alive, 1 - dead)
+    /// </summary>
+    public int isDead;
+
+    /// <summary>
     /// The character's maximum health points.
     /// </summary>
     public int maxHp;

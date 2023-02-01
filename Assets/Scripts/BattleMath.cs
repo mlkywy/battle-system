@@ -5,50 +5,23 @@ using UnityEngine;
 
 public class BattleMath 
 {
-    string _attackerName;
-    string _opponentName;
-    int _level;
-    int _physicalAttackPower;
-    int _magicAttackPower;
-    int _strength;
-    int _intelligence;
-    int _luck;
-    int _opponentAgility;
-    int _opponentPhysicalDefense;
-    int _opponentMagicDefense;
-
-    public BattleMath(Unit attacker, Unit opponent)
-    {
-        _attackerName = attacker.unitName;
-        _opponentName = opponent.unitName;
-        _level = attacker.level;
-        _physicalAttackPower = attacker.physicalAttackPower;
-        _magicAttackPower = attacker.magicAttackPower;
-        _strength = attacker.strength;
-        _intelligence = attacker.intelligence;
-        _luck = attacker.luck;
-        _opponentAgility = opponent.agility;
-        _opponentPhysicalDefense = opponent.physicalDefense;
-        _opponentMagicDefense = opponent.magicDefense;
-    }
-
     /// <summary>
     /// Calculates the physical damage output based on the current attacker's stats and the current opponent's stats.
     /// </summary>
-    public int CalculatePhysicalAttackDamage()
+    public int CalculatePhysicalAttackDamage(Unit attacker, Unit opponent)
     {  
-        Debug.Log($"Current attacker is: {_attackerName}, current opponent is: {_opponentName}!");
+        Debug.Log($"Current attacker is: {attacker.unitName}, current opponent is: {opponent.unitName}!");
 
         double damage = 0;
-        double baseDamage = _physicalAttackPower + _strength;
+        double baseDamage = attacker.physicalAttackPower + attacker.strength;
 
         float randDodge = UnityEngine.Random.value;
         float randCrit = UnityEngine.Random.value;
         float randVariance = UnityEngine.Random.value;
 
-        float criticalHitChance = (float) _luck / 100;
+        float criticalHitChance = (float) attacker.luck / 100;
         float criticalHitMultiplier = 1.5f;
-        float opponentDodgeChance = (float) _opponentAgility / 100;
+        float opponentDodgeChance = (float) opponent.agility / 100;
 
         if (randDodge < opponentDodgeChance) 
         {
@@ -68,7 +41,7 @@ public class BattleMath
             damage = baseDamage; // Normal hit!
         }
 
-        damage -= _opponentPhysicalDefense / 100 * damage; // Apply damage reduction based on opponent's defense stat
+        damage -= opponent.physicalDefense / 100 * damage; // Apply damage reduction based on opponent's defense stat
         
         return Convert.ToInt32(damage);
     }

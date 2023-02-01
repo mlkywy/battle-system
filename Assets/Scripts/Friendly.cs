@@ -16,6 +16,8 @@ public class Friendly : Unit
     {
         if (DataManager.instance.friendlyStats.TryGetValue(unitName, out var stats))
         {
+            unitState = stats["unitState"];
+            isDead = stats["isDead"];
             maxHp = stats["maxHp"];
             currentHp = stats["currentHp"];
             maxSp = stats["maxSp"];
@@ -43,6 +45,8 @@ public class Friendly : Unit
     {
         var stats = new Dictionary<string, int>
         {
+            { "unitState", unitState }, 
+            { "isDead", isDead },
             { "maxHp", maxHp },
             { "currentHp", currentHp },
             { "maxSp", maxSp },
