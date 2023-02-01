@@ -9,9 +9,9 @@ public class DataManager : MonoBehaviour
     /// <summary>
     /// Contains the base stats of each of unit and keeps tracks of their changes.
     /// </summary>
-    public Dictionary<string, Dictionary<string, int>> unitStats = new Dictionary<string, Dictionary<string, int>>
+    public Dictionary<string, Dictionary<string, int>> friendlyStats = new Dictionary<string, Dictionary<string, int>>
     {
-        { "Unit1", new Dictionary<string, int> 
+        { "Friendly1", new Dictionary<string, int> 
             { 
                 { "maxHp", 200 }, 
                 { "currentHp", 200 }, 
@@ -28,7 +28,7 @@ public class DataManager : MonoBehaviour
                 { "magicDefense", 10 }
             } 
         },
-        { "Unit2", new Dictionary<string, int> 
+        { "Friendly2", new Dictionary<string, int> 
             { 
                 { "maxHp", 170 }, 
                 { "currentHp", 170 }, 

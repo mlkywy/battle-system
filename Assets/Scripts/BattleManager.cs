@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
-    public List<Unit> units;
+    public List<Friendly> friendlies;
     public List<Enemy> enemies;
 
     private BattleMath battleMath;
@@ -33,15 +33,15 @@ public class BattleManager : MonoBehaviour
 
     bool TestCheckLists() 
     {
-        if (units.Count == 0 || units == null)
+        if (friendlies.Count == 0 || friendlies == null)
         {
-            Debug.Log("Missing units!");
+            Debug.Log("Missing friendly units!");
             return false;
         }
 
         if (enemies.Count == 0 || enemies == null)
         {
-            Debug.Log("Missing enemies!");
+            Debug.Log("Missing enemy units!");
             return false;
         }
 
@@ -52,10 +52,10 @@ public class BattleManager : MonoBehaviour
     {
         if (TestCheckLists())
         {
-            Unit unit1 = units[0];
+            Unit friendly1 = friendlies[0];
             Enemy enemy1 = enemies[0];
 
-            battleMath = new BattleMath(unit1, enemy1);
+            battleMath = new BattleMath(friendly1, enemy1);
             int damage = battleMath.CalculatePhysicalAttackDamage();
             enemy1.currentHp = enemy1.currentHp - damage;
 
@@ -67,12 +67,12 @@ public class BattleManager : MonoBehaviour
     {
         if (TestCheckLists())
         {
-            Unit unit1 = units[0];
+            Unit friendly1 = friendlies[0];
             Enemy enemy1 = enemies[0];
 
-            battleMath = new BattleMath(enemy1, unit1);
+            battleMath = new BattleMath(enemy1, friendly1);
             int damage = battleMath.CalculatePhysicalAttackDamage();
-            unit1.currentHp = unit1.currentHp - damage;
+            friendly1.currentHp = friendly1.currentHp - damage;
 
             Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");
         }
@@ -80,17 +80,17 @@ public class BattleManager : MonoBehaviour
 
     void TestSwitchingScenes()
     {
-        if (units.Count == 0 || units == null)
+        if (friendlies.Count == 0 || friendlies == null)
         {
-            Debug.Log("Missing units!");
+            Debug.Log("Missing friendly units!");
             return;
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            foreach (Unit unit in units)
+            foreach (Friendly friendly in friendlies)
             {
-                unit.SaveData();
+                friendly.SaveData();
             }
 
             SceneManager.LoadScene("Scene2");
@@ -98,9 +98,9 @@ public class BattleManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            foreach (Unit unit in units)
+            foreach (Friendly friendly in friendlies)
             {
-                unit.SaveData();
+                friendly.SaveData();
             }
 
             SceneManager.LoadScene("Scene1");

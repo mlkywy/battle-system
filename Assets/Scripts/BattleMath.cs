@@ -17,10 +17,10 @@ public class BattleMath
     int _opponentPhysicalDefense;
     int _opponentMagicDefense;
 
-    public BattleMath(Character attacker, Character opponent)
+    public BattleMath(Unit attacker, Unit opponent)
     {
-        _attackerName = attacker.characterName;
-        _opponentName = opponent.characterName;
+        _attackerName = attacker.unitName;
+        _opponentName = opponent.unitName;
         _level = attacker.level;
         _physicalAttackPower = attacker.physicalAttackPower;
         _magicAttackPower = attacker.magicAttackPower;

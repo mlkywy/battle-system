@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5049130096779887759}
-  - component: {fileID: 5049130096779887756}
+  - component: {fileID: 300663605444997321}
   m_Layer: 0
-  m_Name: Unit1
+  m_Name: Friendly1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5049130096779887756
+--- !u!114 &300663605444997321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5049130096779887757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e904dc0212b9d044b1e7455a46c93fd, type: 3}
+  m_Script: {fileID: 11500000, guid: ef11185ddd7df47d089e1b77ac337fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Unit1
+  unitName: Friendly1
   maxHp: 0
   currentHp: 0
   maxSp: 0
@@ -56,5 +56,6 @@ MonoBehaviour:
   intelligence: 0
   agility: 0
   luck: 0
-  defense: 0
+  physicalDefense: 0
+  magicDefense: 0
   abilities: []
