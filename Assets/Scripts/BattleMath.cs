@@ -10,8 +10,6 @@ public class BattleMath
     /// </summary>
     public int CalculatePhysicalAttackDamage(Unit attacker, Unit opponent)
     {  
-        Debug.Log($"Current attacker is: {attacker.unitName}, current opponent is: {opponent.unitName}!");
-
         double damage = 0;
         double baseDamage = attacker.physicalAttackPower + attacker.strength;
 

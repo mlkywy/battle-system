@@ -18,11 +18,11 @@ public class Friendly : Unit
         {
             unitState = stats["unitState"];
             isDead = stats["isDead"];
+            level = stats["level"];
             maxHp = stats["maxHp"];
             currentHp = stats["currentHp"];
             maxSp = stats["maxSp"];
             currentSp = stats["currentSp"];
-            level = stats["level"];
             physicalAttackPower = stats["physicalAttackPower"];
             magicAttackPower = stats["magicAttackPower"];
             strength = stats["strength"];
@@ -47,11 +47,11 @@ public class Friendly : Unit
         {
             { "unitState", unitState }, 
             { "isDead", isDead },
+            { "level", level }, 
             { "maxHp", maxHp },
             { "currentHp", currentHp },
             { "maxSp", maxSp },
             { "currentSp", currentSp },
-            { "level", level }, 
             { "physicalAttackPower", physicalAttackPower },
             { "magicAttackPower", magicAttackPower },
             { "strength", strength }, 

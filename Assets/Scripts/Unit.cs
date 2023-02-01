@@ -20,6 +20,11 @@ public class Unit : MonoBehaviour
     public int isDead;
 
     /// <summary>
+    /// The character's current level.
+    /// </summary>
+    public int level;
+
+    /// <summary>
     /// The character's maximum health points.
     /// </summary>
     public int maxHp;
@@ -38,11 +43,6 @@ public class Unit : MonoBehaviour
     /// The character's current skill points.
     /// </summary>
     public int currentSp;
-
-    /// <summary>
-    /// The character's current level.
-    /// </summary>
-    public int level;
 
     /// <summary>
     /// The character's base physical attack power.
