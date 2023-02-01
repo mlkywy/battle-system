@@ -629,7 +629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: level
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: maxHp
@@ -649,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: strength
-      value: 40
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: currentHp
@@ -672,8 +672,16 @@ PrefabInstance:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
+      propertyPath: magicDefense
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: characterName
       value: Enemy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
+      propertyPath: physicalDefense
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: magicAttackPower

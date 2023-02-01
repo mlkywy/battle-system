@@ -14,7 +14,8 @@ public class BattleMath
     int _intelligence;
     int _luck;
     int _opponentAgility;
-    int _opponentDefense;
+    int _opponentPhysicalDefense;
+    int _opponentMagicDefense;
 
     public BattleMath(Character attacker, Character opponent)
     {
@@ -27,7 +28,8 @@ public class BattleMath
         _intelligence = attacker.intelligence;
         _luck = attacker.luck;
         _opponentAgility = opponent.agility;
-        _opponentDefense = opponent.defense;
+        _opponentPhysicalDefense = opponent.physicalDefense;
+        _opponentMagicDefense = opponent.magicDefense;
     }
 
     /// <summary>
@@ -66,7 +68,7 @@ public class BattleMath
             damage = baseDamage; // Normal hit!
         }
 
-        damage -= _opponentDefense / 100 * damage; // Apply damage reduction based on opponent's defense stat
+        damage -= _opponentPhysicalDefense / 100 * damage; // Apply damage reduction based on opponent's defense stat
         
         return Convert.ToInt32(damage);
     }

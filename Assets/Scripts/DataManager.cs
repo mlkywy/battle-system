@@ -24,7 +24,8 @@ public class DataManager : MonoBehaviour
                 { "intelligence", 90 }, 
                 { "agility", 50 }, 
                 { "luck", 10 },
-                { "defense", 45 },
+                { "physicalDefense", 45 },
+                { "magicDefense", 10 }
             } 
         },
         { "Unit2", new Dictionary<string, int> 
@@ -40,7 +41,8 @@ public class DataManager : MonoBehaviour
                 { "intelligence", 200 }, 
                 { "agility", 100 }, 
                 { "luck", 20 },
-                { "defense", 25 },
+                { "physicalDefense", 25 },
+                { "magicDefense", 35 }
             } 
         }
     };

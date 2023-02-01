@@ -27,7 +27,8 @@ public class Unit : Character
             intelligence = stats["intelligence"];
             agility = stats["agility"];
             luck = stats["luck"];
-            defense = stats["defense"];
+            physicalDefense = stats["physicalDefense"];
+            magicDefense = stats["magicDefense"];
         }
         else
         {
@@ -53,7 +54,8 @@ public class Unit : Character
             { "intelligence", intelligence }, 
             { "agility", agility }, 
             { "luck", luck },
-            { "defense", defense },
+            { "physicalDefense", physicalDefense },
+            { "magicDefense", magicDefense },
         };
 
         DataManager.instance.unitStats[characterName] = stats;
