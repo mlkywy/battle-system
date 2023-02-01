@@ -10,7 +10,14 @@ public class Unit : MonoBehaviour
     public int currentHp;
     public int maxSp;
     public int currentSp;
+
+    public int level;
     public int attackPower;
+    public int strength;
+    public int intelligence;
+    public int agility;
+    public int luck;
+    public int defense;
 
     /// <summary>
     /// Contains a list of the unit's abilities (special attacks and spells)
@@ -19,15 +26,30 @@ public class Unit : MonoBehaviour
 
     private void Start()
     {
-        if (DataManager.Instance.unitStats.TryGetValue(unitName, out var stats))
+       SetData();
+    }
+
+    /// <summary>
+    /// Saves unit's current stats to the DataManager class before scene-switching.
+    /// </summary>
+    private void SetData()
+    {
+        if (DataManager.instance.unitStats.TryGetValue(unitName, out var stats))
         {
             maxHp = stats["maxHp"];
             currentHp = stats["currentHp"];
             maxSp = stats["maxSp"];
             currentSp = stats["currentSp"];
-            attackPower = stats["attackPower"];
 
-            print($"stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}, {attackPower}");
+            level = stats["level"];
+            attackPower = stats["attackPower"];
+            strength = stats["strength"];
+            intelligence = stats["intelligence"];
+            agility = stats["agility"];
+            luck = stats["luck"];
+            luck = stats["defense"];
+
+            print($"stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}");
         }
         else
         {
@@ -36,7 +58,7 @@ public class Unit : MonoBehaviour
     }
 
     /// <summary>
-    /// This method saves the unit's current stats to the DataManager class before scene-switching.
+    /// Sets the unit's current stats based on the data in the DataManager.
     /// </summary>
     private void SaveData()
     {
@@ -46,44 +68,32 @@ public class Unit : MonoBehaviour
             { "currentHp", currentHp },
             { "maxSp", maxSp },
             { "currentSp", currentSp },
-            { "attackPower", attackPower }
+            { "level", level }, 
+            { "attackPower", attackPower },
+            { "strength", strength }, 
+            { "intelligence", intelligence }, 
+            { "agility", agility }, 
+            { "luck", luck },
+            { "defense", defense },
         };
 
-        DataManager.Instance.unitStats[unitName] = stats;
+        DataManager.instance.unitStats[unitName] = stats;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            currentHp = currentHp - 10;
-            print($"10 DAMAGE TAKEN! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}, {attackPower}");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            currentHp = currentHp + 10;
-            print($"10 HEALTH HEALED! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}, {attackPower}");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            maxHp = maxHp + 50;
-            print($"LEVEL UP, MAX HEALTH INCREASED! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}, {attackPower}");
-        }
-
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             SaveData();
             SceneManager.LoadScene("Scene2");
-            print($"SWITCHED TO SCENE2! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}, {attackPower}");
+            print($"SWITCHED TO SCENE2! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}");
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             SaveData();
             SceneManager.LoadScene("Scene1");
-            print($"SWITCHED TO SCENE1! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}, {attackPower}");
+            print($"SWITCHED TO SCENE1! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}");
         }
     }
 }

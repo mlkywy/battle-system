@@ -4,23 +4,54 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager Instance;
+    public static DataManager instance;
 
+    /// <summary>
+    /// Contains the base stats of each of unit and keeps tracks of their changes.
+    /// </summary>
     public Dictionary<string, Dictionary<string, int>> unitStats = new Dictionary<string, Dictionary<string, int>>
     {
-        { "Unit1", new Dictionary<string, int> { { "maxHp", 200 }, { "currentHp", 200 }, { "maxSp", 200 }, { "currentSp", 200 }, { "attackPower", 200 } } },
-        { "Unit2", new Dictionary<string, int> { { "maxHp", 100 }, { "currentHp", 100 }, { "maxSp", 100 }, { "currentSp", 100 }, { "attackPower", 100 } } }
+        { "Unit1", new Dictionary<string, int> 
+            { 
+                { "maxHp", 200 }, 
+                { "currentHp", 200 }, 
+                { "maxSp", 140 }, 
+                { "currentSp", 140 }, 
+                { "level", 2 }, 
+                { "attackPower", 150 },
+                { "strength", 200 }, 
+                { "intelligence", 90 }, 
+                { "agility", 50 }, 
+                { "luck", 10 },
+                { "defense", 45 },
+            } 
+        },
+        { "Unit2", new Dictionary<string, int> 
+            { 
+                { "maxHp", 170 }, 
+                { "currentHp", 170 }, 
+                { "maxSp", 230 }, 
+                { "currentSp", 230 }, 
+                { "level", 2 }, 
+                { "attackPower", 60 },
+                { "strength", 80 }, 
+                { "intelligence", 200 }, 
+                { "agility", 100 }, 
+                { "luck", 20 },
+                { "defense", 25 },
+            } 
+        }
     };
 
     private void Awake()
     {
-        if (Instance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 }
