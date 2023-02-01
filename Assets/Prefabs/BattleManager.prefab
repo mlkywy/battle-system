@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5049130096779887757
+--- !u!1 &3008180039489861269
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5049130096779887759}
-  - component: {fileID: 5049130096779887756}
+  - component: {fileID: 3008180039489861270}
+  - component: {fileID: 3008180039489861271}
   m_Layer: 0
-  m_Name: Unit2
+  m_Name: BattleManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5049130096779887759
+--- !u!4 &3008180039489861270
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5049130096779887757}
+  m_GameObject: {fileID: 3008180039489861269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,29 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5049130096779887756
+--- !u!114 &3008180039489861271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5049130096779887757}
+  m_GameObject: {fileID: 3008180039489861269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e904dc0212b9d044b1e7455a46c93fd, type: 3}
+  m_Script: {fileID: 11500000, guid: cf8151c7f955cdc4c98a298c2a6be310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Unit2
-  maxHp: 0
-  currentHp: 0
-  maxSp: 0
-  currentSp: 0
-  level: 0
-  physicalAttackPower: 0
-  magicAttackPower: 0
-  strength: 0
-  intelligence: 0
-  agility: 0
-  luck: 0
-  defense: 0
-  abilities: []
+  units:
+  - {fileID: 0}
+  enemies:
+  - {fileID: 0}

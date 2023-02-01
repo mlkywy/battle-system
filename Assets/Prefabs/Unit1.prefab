@@ -44,10 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e904dc0212b9d044b1e7455a46c93fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Unit1
+  characterName: Unit1
   maxHp: 0
   currentHp: 0
   maxSp: 0
   currentSp: 0
-  attackPower: 0
+  level: 0
+  physicalAttackPower: 0
+  magicAttackPower: 0
+  strength: 0
+  intelligence: 0
+  agility: 0
+  luck: 0
+  defense: 0
   abilities: []

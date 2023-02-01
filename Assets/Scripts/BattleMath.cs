@@ -16,32 +16,18 @@ public class BattleMath
     int _opponentAgility;
     int _opponentDefense;
 
-    public BattleMath(Unit unit, Enemy enemy)
+    public BattleMath(Character attacker, Character opponent)
     {
-        _attackerName = unit.unitName;
-        _opponentName = enemy.enemyName;
-        _level = unit.level;
-        _physicalAttackPower = unit.physicalAttackPower;
-        _magicAttackPower = unit.magicAttackPower;
-        _strength = unit.strength;
-        _intelligence = unit.intelligence;
-        _luck = unit.luck;
-        _opponentAgility = enemy.agility;
-        _opponentDefense = enemy.defense;
-    }
-
-    public BattleMath(Enemy enemy, Unit unit)
-    {
-        _attackerName = enemy.enemyName;
-        _opponentName = unit.unitName;
-        _level = enemy.level;
-        _physicalAttackPower = enemy.physicalAttackPower;
-        _magicAttackPower = enemy.magicAttackPower;
-        _strength = enemy.strength;
-        _intelligence = enemy.intelligence;
-        _luck = enemy.luck;
-        _opponentAgility = unit.agility;
-        _opponentDefense = unit.defense;
+        _attackerName = attacker.characterName;
+        _opponentName = opponent.characterName;
+        _level = attacker.level;
+        _physicalAttackPower = attacker.physicalAttackPower;
+        _magicAttackPower = attacker.magicAttackPower;
+        _strength = attacker.strength;
+        _intelligence = attacker.intelligence;
+        _luck = attacker.luck;
+        _opponentAgility = opponent.agility;
+        _opponentDefense = opponent.defense;
     }
 
     /// <summary>
