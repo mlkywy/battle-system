@@ -27,7 +27,7 @@ public class Unit : Character
             intelligence = stats["intelligence"];
             agility = stats["agility"];
             luck = stats["luck"];
-            luck = stats["defense"];
+            defense = stats["defense"];
         }
         else
         {
