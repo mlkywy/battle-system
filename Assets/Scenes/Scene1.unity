@@ -763,6 +763,14 @@ PrefabInstance:
       propertyPath: intelligence
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
+      propertyPath: magicAttackPower
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
+      propertyPath: physicalAttackPower
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c03538299725a4547b69c905224555ed, type: 3}
 --- !u!1 &2010310295

@@ -8,8 +8,10 @@ public class BattleMath
     string _attackerName;
     string _opponentName;
     int _level;
-    int _attackPower;
+    int _physicalAttackPower;
+    int _magicAttackPower;
     int _strength;
+    int _intelligence;
     int _luck;
     int _opponentAgility;
     int _opponentDefense;
@@ -19,8 +21,10 @@ public class BattleMath
         _attackerName = unit.unitName;
         _opponentName = enemy.enemyName;
         _level = unit.level;
-        _attackPower = unit.attackPower;
+        _physicalAttackPower = unit.physicalAttackPower;
+        _magicAttackPower = unit.magicAttackPower;
         _strength = unit.strength;
+        _intelligence = unit.intelligence;
         _luck = unit.luck;
         _opponentAgility = enemy.agility;
         _opponentDefense = enemy.defense;
@@ -31,56 +35,52 @@ public class BattleMath
         _attackerName = enemy.enemyName;
         _opponentName = unit.unitName;
         _level = enemy.level;
-        _attackPower = enemy.attackPower;
+        _physicalAttackPower = enemy.physicalAttackPower;
+        _magicAttackPower = enemy.magicAttackPower;
         _strength = enemy.strength;
+        _intelligence = enemy.intelligence;
         _luck = enemy.luck;
         _opponentAgility = unit.agility;
         _opponentDefense = unit.defense;
     }
 
     /// <summary>
-    /// Calculates the physical damage output based on the current character's stats and the current opponent's stats.
+    /// Calculates the physical damage output based on the current attacker's stats and the current opponent's stats.
     /// </summary>
     public int CalculatePhysicalAttackDamage()
     {  
         Debug.Log($"Current attacker is: {_attackerName}, current opponent is: {_opponentName}!");
 
         double damage = 0;
+        double baseDamage = _physicalAttackPower + _strength;
+
         float randDodge = UnityEngine.Random.value;
         float randCrit = UnityEngine.Random.value;
         float randVariance = UnityEngine.Random.value;
 
         float criticalHitChance = (float) _luck / 100;
         float criticalHitMultiplier = 1.5f;
-        float baseDamage = _attackPower + _strength;
         float opponentDodgeChance = (float) _opponentAgility / 100;
 
         if (randDodge < opponentDodgeChance) 
         {
-            // Attack misses!
-            Debug.Log("ATTACK MISSED!");  
-            return Convert.ToInt32(damage);  
+            Debug.Log("Attack missed!");
+            return Convert.ToInt32(damage); // Attack missed!
         } 
 
-        // Add random variance to the base damage
-        baseDamage *= (float) (1 + (randVariance - 0.5) * criticalHitChance);
-        Debug.Log($"Base damage: {1 + (randVariance - 0.5) * criticalHitChance}");
+        baseDamage *= (1 + (randVariance - 0.5) * criticalHitChance); // Add random variance to the base damage
 
         if (randCrit < criticalHitChance) 
         {
-            // Critical hit!
-            damage = baseDamage * criticalHitMultiplier;
-            Debug.Log("CRITICAL HIT!");  
+            Debug.Log("Critical hit!");
+            damage = baseDamage * criticalHitMultiplier; // Critical hit!
         } 
         else 
         {
-            // Normal hit!
-            damage = baseDamage;
-            Debug.Log("NORMAL HIT!");    
+            damage = baseDamage; // Normal hit!
         }
 
-        // Apply damage reduction based on opponent's defense stat
-        damage -= _opponentDefense / 100 * damage;
+        damage -= _opponentDefense / 100 * damage; // Apply damage reduction based on opponent's defense stat
         
         return Convert.ToInt32(damage);
     }

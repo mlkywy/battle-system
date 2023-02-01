@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
     public int currentSp;
 
     public int level;
-    public int attackPower;
+    public int physicalAttackPower;
+    public int magicAttackPower;
     public int strength;
     public int intelligence;
     public int agility;
@@ -19,7 +20,7 @@ public class Enemy : MonoBehaviour
     public int defense;
 
     /// <summary>
-    /// Contains a list of the unit's abilities (special attacks and spells)
+    /// Contains a list of the enemy's abilities (special attacks and spells)
     /// </summary>
     public List<AbilityObject> abilities;
 }

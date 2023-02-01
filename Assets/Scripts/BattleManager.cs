@@ -9,13 +9,11 @@ public class BattleManager : MonoBehaviour
 
     private BattleMath battleMath;
 
-    // Start is called before the first frame update
     void Start()
     {
        
     }
 
-    // Update is called once per frame
     void Update()
     {
         Unit unit1 = units[0];

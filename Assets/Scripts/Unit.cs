@@ -12,7 +12,8 @@ public class Unit : MonoBehaviour
     public int currentSp;
 
     public int level;
-    public int attackPower;
+    public int physicalAttackPower;
+    public int magicAttackPower;
     public int strength;
     public int intelligence;
     public int agility;
@@ -42,18 +43,17 @@ public class Unit : MonoBehaviour
             currentSp = stats["currentSp"];
 
             level = stats["level"];
-            attackPower = stats["attackPower"];
+            physicalAttackPower = stats["physicalAttackPower"];
+            magicAttackPower = stats["magicAttackPower"];
             strength = stats["strength"];
             intelligence = stats["intelligence"];
             agility = stats["agility"];
             luck = stats["luck"];
             luck = stats["defense"];
-
-            print($"stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}");
         }
         else
         {
-            print("This unit does not exist in the dictionary!");
+            Debug.Log("This unit does not exist in the dictionary!");
         }
     }
 
@@ -69,7 +69,8 @@ public class Unit : MonoBehaviour
             { "maxSp", maxSp },
             { "currentSp", currentSp },
             { "level", level }, 
-            { "attackPower", attackPower },
+            { "physicalAttackPower", physicalAttackPower },
+            { "magicAttackPower", magicAttackPower },
             { "strength", strength }, 
             { "intelligence", intelligence }, 
             { "agility", agility }, 
@@ -86,14 +87,12 @@ public class Unit : MonoBehaviour
         {
             SaveData();
             SceneManager.LoadScene("Scene2");
-            print($"SWITCHED TO SCENE2! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}");
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             SaveData();
             SceneManager.LoadScene("Scene1");
-            print($"SWITCHED TO SCENE1! stats: {unitName}, {currentHp}/{maxHp}, {currentSp}/{maxSp}");
         }
     }
 }
