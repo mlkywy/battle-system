@@ -60,7 +60,7 @@ public class BattleManager : MonoBehaviour
             Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
-            int damage = battleMath.CalculatePhysicalAttackDamage(friendly1, enemy1);
+            int damage = battleMath.CalculateBasicAttackDamage(friendly1, enemy1);
             enemy1.currentHp = enemy1.currentHp - damage;
 
             Debug.Log($"{damage} DAMAGE DEALT TO ENEMY!");
@@ -74,7 +74,7 @@ public class BattleManager : MonoBehaviour
             Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
-            int damage = battleMath.CalculatePhysicalAttackDamage(enemy1, friendly1);
+            int damage = battleMath.CalculateBasicAttackDamage(enemy1, friendly1);
             friendly1.currentHp = friendly1.currentHp - damage;
 
             Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");

@@ -6,9 +6,9 @@ using UnityEngine;
 public class BattleMath 
 {
     /// <summary>
-    /// Calculates the physical damage output based on the current attacker's stats and the current opponent's stats.
+    /// Calculates the physical damage output of a basic attack based on the current attacker's stats and the current opponent's stats.
     /// </summary>
-    public int CalculatePhysicalAttackDamage(Unit attacker, Unit opponent)
+    public int CalculateBasicAttackDamage(Unit attacker, Unit opponent)
     {  
         double damage = 0;
         double baseDamage = attacker.physicalAttackPower + attacker.strength;
@@ -42,5 +42,13 @@ public class BattleMath
         damage -= opponent.physicalDefense / 100 * damage; // Apply damage reduction based on opponent's defense stat
         
         return Convert.ToInt32(damage);
+    }
+
+    /// <summary>
+    /// Calculates the magical damage output of a spell based on the current attacker's stats and the current opponent's stats.
+    /// </summary>
+    public int CalculateSpellDamage(Unit attacker, Unit opponent, SpellObject spell)
+    {  
+        return 0;
     }
 }
