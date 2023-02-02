@@ -49,7 +49,7 @@ public class Friendly : Unit
     }
 
     /// <summary>
-    /// Saves unit's current stats to the DataManager class before scene-switching.
+    /// Saves unit's current stats to the DataManager class while saving the game and before scene-switching.
     /// </summary>
     public void SaveData()
     {

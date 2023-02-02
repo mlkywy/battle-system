@@ -26,7 +26,7 @@ public class SpellObject : ScriptableObject
     public int spellPower;
 
     /// <summary>
-    /// The spell's skill point cost, reducing a unit's current MP with each use.
+    /// The spell's mana point cost, reducing a unit's current MP with each use.
     /// </summary>
     public int mpCost;
 }
