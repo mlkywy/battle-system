@@ -41,11 +41,10 @@ public class Friendly : Unit
 
         if (DataManager.instance.startingSpells.TryGetValue(unitName, out var spellObjects))
         {
-            spells = spellObjects;
-        }
-        else
-        {
-            Debug.Log("This unit does not exist in the dictionary for spells!");
+            if (spellObjects.Count > 0)
+            {
+                spells = spellObjects;
+            }
         }
     }
 
@@ -75,9 +74,12 @@ public class Friendly : Unit
             { "magicDefense", magicDefense },
         };
 
-        var spellObjects = spells;
-
+        if (spells.Count > 0)
+        {
+            var spellObjects = spells;
+            DataManager.instance.startingSpells[unitName] = spellObjects;
+        }
+    
         DataManager.instance.startingStats[unitName] = stats;
-        DataManager.instance.startingSpells[unitName] = spellObjects;
     }
 }

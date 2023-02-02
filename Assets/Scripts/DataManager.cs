@@ -6,8 +6,6 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
 
-    public List<SpellObject> spells;
-
     /// <summary>
     /// Contains the base stats of each of unit and keeps tracks of their changes.
     /// </summary>
