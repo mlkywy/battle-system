@@ -10,7 +10,7 @@ public class Friendly : Unit
     }
 
     /// <summary>
-    /// Saves unit's current stats to the DataManager class before scene-switching.
+    /// Sets the unit's current stats based on the data in the DataManager.
     /// </summary>
     private void SetData()
     {
@@ -49,7 +49,7 @@ public class Friendly : Unit
     }
 
     /// <summary>
-    /// Sets the unit's current stats based on the data in the DataManager.
+    /// Saves unit's current stats to the DataManager class before scene-switching.
     /// </summary>
     public void SaveData()
     {

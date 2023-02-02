@@ -603,6 +603,10 @@ PrefabInstance:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
+      propertyPath: unitName
+      value: Random Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: currentHp
       value: 1000
       objectReference: {fileID: 0}
