@@ -14,7 +14,7 @@ public class Friendly : Unit
     /// </summary>
     private void SetData()
     {
-        if (DataManager.instance.friendlyStats.TryGetValue(unitName, out var stats))
+        if (DataManager.instance.startingStats.TryGetValue(unitName, out var stats))
         {
             unitState = stats["unitState"];
             isDead = stats["isDead"];
@@ -23,6 +23,8 @@ public class Friendly : Unit
             currentHp = stats["currentHp"];
             maxSp = stats["maxSp"];
             currentSp = stats["currentSp"];
+            maxMp = stats["maxMp"];
+            currentMp = stats["currentMp"];
             physicalAttackPower = stats["physicalAttackPower"];
             magicAttackPower = stats["magicAttackPower"];
             strength = stats["strength"];
@@ -34,7 +36,16 @@ public class Friendly : Unit
         }
         else
         {
-            Debug.Log("This unit does not exist in the dictionary!");
+            Debug.Log("This unit does not exist in the dictionary for stats!");
+        }
+
+        if (DataManager.instance.startingSpells.TryGetValue(unitName, out var spellObjects))
+        {
+            spells = spellObjects;
+        }
+        else
+        {
+            Debug.Log("This unit does not exist in the dictionary for spells!");
         }
     }
 
@@ -52,6 +63,8 @@ public class Friendly : Unit
             { "currentHp", currentHp },
             { "maxSp", maxSp },
             { "currentSp", currentSp },
+            { "maxMp", maxMp },
+            { "currentMp", currentMp },
             { "physicalAttackPower", physicalAttackPower },
             { "magicAttackPower", magicAttackPower },
             { "strength", strength }, 
@@ -62,6 +75,9 @@ public class Friendly : Unit
             { "magicDefense", magicDefense },
         };
 
-        DataManager.instance.friendlyStats[unitName] = stats;
+        var spellObjects = spells;
+
+        DataManager.instance.startingStats[unitName] = stats;
+        DataManager.instance.startingSpells[unitName] = spellObjects;
     }
 }

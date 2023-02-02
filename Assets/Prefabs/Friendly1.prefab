@@ -45,11 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Friendly1
+  unitState: 0
+  isDead: 0
+  level: 0
   maxHp: 0
   currentHp: 0
   maxSp: 0
   currentSp: 0
-  level: 0
+  maxMp: 0
+  currentMp: 0
   physicalAttackPower: 0
   magicAttackPower: 0
   strength: 0
@@ -58,4 +62,6 @@ MonoBehaviour:
   luck: 0
   physicalDefense: 0
   magicDefense: 0
-  abilities: []
+  spells:
+  - {fileID: 11400000, guid: a61e9dd8cc64d48c3a72a4c0c46ed3c2, type: 2}
+  - {fileID: 11400000, guid: 22c22c8c55eeb48cd84f362b72ded506, type: 2}
