@@ -44,12 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef11185ddd7df47d089e1b77ac337fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Friendly1
+  unitName: Friendly2
+  unitState: 0
+  isDead: 0
+  level: 0
   maxHp: 0
   currentHp: 0
   maxSp: 0
   currentSp: 0
-  level: 0
+  maxMp: 0
+  currentMp: 0
   physicalAttackPower: 0
   magicAttackPower: 0
   strength: 0
@@ -58,4 +62,4 @@ MonoBehaviour:
   luck: 0
   physicalDefense: 0
   magicDefense: 0
-  abilities: []
+  spells: []

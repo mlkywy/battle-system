@@ -13,12 +13,12 @@ public class SpellObject : ScriptableObject
     /// <summary>
     /// The spell's type. This includes spell (magic) and special (physical).
     /// </summary>
-    public Constants.SpellTypes spellType;
+    public SpellType spellType;
 
     /// <summary>
     /// The ability's element type. This includes none (no element), ice, fire, lightning, wind, or earth.
     /// </summary>
-    public Constants.ElementTypes elementType;
+    public ElementType elementType;
 
     /// <summary>
     /// The spell's base power. This includes physical damage, magic damage, healing potency, etc.

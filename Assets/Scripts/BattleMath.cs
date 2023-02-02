@@ -52,3 +52,22 @@ public class BattleMath
         return 0;
     }
 }
+
+
+
+//    double damage = 0;
+//     double baseDamage = _magicAttackPower + _intelligence + spell.baseMagicAttackPower;
+
+//     float randDodge = UnityEngine.Random.value;
+//     float opponentDodgeChance = (float) _opponentAgility / 100;
+
+//     if (randDodge < opponentDodgeChance) 
+//     {
+//         Debug.Log("Attack missed!");
+//         return Convert.ToInt32(damage); // Attack missed!
+//     }
+
+//     damage = baseDamage;
+//     damage -= _opponentMagicDefense / 100 * damage; // Apply damage reduction based on opponent's magic defense stat
+
+//     return Convert.ToInt32(damage);
