@@ -11,11 +11,6 @@ public class SpellObject : ScriptableObject
     public string spellName;
 
     /// <summary>
-    /// The spell's type. This includes spell (magic) and special (physical).
-    /// </summary>
-    public SpellType spellType;
-
-    /// <summary>
     /// The ability's element type. This includes none (no element), ice, fire, lightning, wind, or earth.
     /// </summary>
     public ElementType elementType;
