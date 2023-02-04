@@ -11,7 +11,7 @@ public class SpellObject : ScriptableObject
     public string spellName;
 
     /// <summary>
-    /// The ability's element type. This includes none (no element), ice, fire, lightning, wind, or earth.
+    /// The spell's element type. This includes none (no element), ice, fire, lightning, wind, or earth.
     /// </summary>
     public ElementType elementType;
 
