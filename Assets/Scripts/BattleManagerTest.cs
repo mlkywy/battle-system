@@ -7,14 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class BattleManagerTest : MonoBehaviour
 {
-    List<Unit> allUnits => FindObjectsOfType<Unit>().ToList();
-    List<Friendly> friendlyUnits => allUnits.Where(unit => unit.unitType == UnitType.Friendly && !unit.isDead).Cast<Friendly>().ToList();
-    List<Enemy> enemyUnits => allUnits.Where(unit => unit.unitType == UnitType.Enemy && !unit.isDead).Cast<Enemy>().ToList();
+    protected List<Unit> allUnits => FindObjectsOfType<Unit>().ToList();
+    
+    public List<Friendly> friendlyUnits => allUnits.GetUnitByType(UnitType.Friendly).Cast<Friendly>().ToList();
+    public List<Enemy> enemyUnits => allUnits.GetUnitByType(UnitType.Enemy).Cast<Enemy>().ToList();
 
     int currentFriendlyIndex = 0;
     int currentEnemyIndex = 0;
-
-    BattleMath battleMath = new BattleMath();
 
     void Start()
     {
@@ -60,8 +59,8 @@ public class BattleManagerTest : MonoBehaviour
             Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
-            // int damage = battleMath.CalculateBasicAttackDamage(friendly1, enemy1);
-            int damage = battleMath.CalculateSpellDamage(friendly1, enemy1, friendly1.spells[0]);
+            // int damage = BattleMath.CalculateBasicAttackDamage(friendly1, enemy1);
+            int damage = BattleMath.CalculateSpellDamage(friendly1, enemy1, friendly1.spells[0]);
             enemy1.currentHp = enemy1.currentHp - damage;
 
             if (damage >= 0)
@@ -82,7 +81,7 @@ public class BattleManagerTest : MonoBehaviour
             Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
-            int damage = battleMath.CalculateBasicAttackDamage(enemy1, friendly1);
+            int damage = BattleMath.CalculateBasicAttackDamage(enemy1, friendly1);
             friendly1.currentHp = friendly1.currentHp - damage;
 
             Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");

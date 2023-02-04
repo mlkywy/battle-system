@@ -1,14 +1,23 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleMath 
+public static class BattleMath 
 {
+    /// <summary>
+    /// Returns a list of units based on the type: Friendly, Enemy.
+    /// </summary>
+    public static List<Unit> GetUnitByType(this List<Unit> units, UnitType type)
+    {
+        return units.Where(unit => unit.unitType == type).ToList();
+    }
+
     /// <summary>
     /// Calculates the physical damage output of a basic attack based on the current attacker's stats and the current opponent's stats.
     /// </summary>
-    public int CalculateBasicAttackDamage(Unit attacker, Unit opponent)
+    public static int CalculateBasicAttackDamage(Unit attacker, Unit opponent)
     {  
         float damage = 0;
         float baseDamage = attacker.physicalAttackPower + attacker.strength;
@@ -49,7 +58,7 @@ public class BattleMath
     /// <summary>
     /// Calculates the magical damage output of a spell based on the current attacker's stats and the current opponent's stats.
     /// </summary>
-    public int CalculateSpellDamage(Unit attacker, Unit opponent, SpellObject spell)
+    public static int CalculateSpellDamage(Unit attacker, Unit opponent, SpellObject spell)
     {  
         float damage = 0;
         float baseDamage = attacker.magicAttackPower + attacker.intelligence + spell.spellPower;
