@@ -10,8 +10,8 @@ public class BattleMath
     /// </summary>
     public int CalculateBasicAttackDamage(Unit attacker, Unit opponent)
     {  
-        double damage = 0;
-        double baseDamage = attacker.physicalAttackPower + attacker.strength;
+        float damage = 0;
+        float baseDamage = attacker.physicalAttackPower + attacker.strength;
 
         float randDodge = UnityEngine.Random.value;
         float randCrit = UnityEngine.Random.value;
@@ -24,14 +24,16 @@ public class BattleMath
         if (randDodge < opponentDodgeChance) 
         {
             Debug.Log("Attack missed!");
+
             return Convert.ToInt32(damage); // Attack missed!
         } 
 
-        baseDamage *= (1 + (randVariance - 0.5) * criticalHitChance); // Add random variance to the base damage
+        baseDamage *= (float) (1 + (randVariance - 0.5) * criticalHitChance); // Add random variance to the base damage
 
         if (randCrit < criticalHitChance) 
         {
             Debug.Log("Critical hit!");
+
             damage = baseDamage * criticalHitMultiplier; // Critical hit!
         } 
         else 
@@ -39,7 +41,7 @@ public class BattleMath
             damage = baseDamage; // Normal hit!
         }
 
-        damage -= opponent.physicalDefense / 100 * damage; // Apply damage reduction based on opponent's defense stat
+        damage -= (float) opponent.physicalDefense / 100 * damage; // Apply damage reduction based on opponent's physical defense stat
         
         return Convert.ToInt32(damage);
     }
@@ -49,6 +51,50 @@ public class BattleMath
     /// </summary>
     public int CalculateSpellDamage(Unit attacker, Unit opponent, SpellObject spell)
     {  
-        return 0;
+        float damage = 0;
+        float baseDamage = attacker.magicAttackPower + attacker.intelligence + spell.spellPower;
+
+        float randDodge = UnityEngine.Random.value;
+        float randBoost = UnityEngine.Random.value;
+        float randVariance = UnityEngine.Random.value;
+
+        float magicBoostChance = (float) attacker.luck / 100;
+        float magicBoostMultiplier = 1.5f;
+        float opponentDodgeChance = (float) opponent.agility / 100;
+
+        if (randDodge < opponentDodgeChance) 
+        {
+            Debug.Log("Spell missed!");
+
+            return Convert.ToInt32(damage); // Spell missed!
+        } 
+
+        baseDamage *= (float) (1 + (randVariance - 0.5) * magicBoostChance); // Add random variance to the base damage
+
+        if (opponent is Enemy enemy)
+        {
+            if (enemy.immunities.Contains(spell.elementType))
+            {
+                Debug.Log($"Opponent is immune to {spell.elementType}!");
+
+                damage = Math.Abs(baseDamage) * -1;
+                return Convert.ToInt32(damage); // Spell healed the opponent!
+            }
+
+            if (enemy.weaknesses.Contains(spell.elementType))
+            {
+                Debug.Log($"Opponent is weak to {spell.elementType}!");
+
+                damage = baseDamage * magicBoostMultiplier;
+                int reducedDefense = opponent.magicDefense / 2; // Reduce opponent's magic defense stat by half
+                damage -= (float) reducedDefense / 100 * damage; // Apply damage reduction based on opponent's reduced defense stat
+                return Convert.ToInt32(damage); 
+            }
+        }
+
+        damage = baseDamage;
+        damage -= (float) opponent.magicDefense / 100 * damage; // Apply damage reduction based on opponent's magic defense stat
+
+        return Convert.ToInt32(damage);
     }
 }

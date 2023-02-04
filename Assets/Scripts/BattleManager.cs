@@ -60,10 +60,18 @@ public class BattleManager : MonoBehaviour
             Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
-            int damage = battleMath.CalculateBasicAttackDamage(friendly1, enemy1);
+            // int damage = battleMath.CalculateBasicAttackDamage(friendly1, enemy1);
+            int damage = battleMath.CalculateSpellDamage(friendly1, enemy1, friendly1.spells[0]);
             enemy1.currentHp = enemy1.currentHp - damage;
 
-            Debug.Log($"{damage} DAMAGE DEALT TO ENEMY!");
+            if (damage >= 0)
+            {
+                Debug.Log($"{damage} DAMAGE DEALT TO ENEMY!");
+            }
+            else
+            {
+                Debug.Log($"{damage} ENEMY HEALTH HEALED!");
+            }
         }
     }
 

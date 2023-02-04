@@ -636,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: magicDefense
-      value: 15
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: characterName
