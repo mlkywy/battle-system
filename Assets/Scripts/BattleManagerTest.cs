@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BattleManager : MonoBehaviour
+public class BattleManagerTest : MonoBehaviour
 {
     List<Unit> allUnits => FindObjectsOfType<Unit>().ToList();
-    List<Friendly> friendlyUnits => allUnits.Where(unit => unit.unitState == 0 && unit.isDead != 1).Cast<Friendly>().ToList();
-    List<Enemy> enemyUnits => allUnits.Where(unit => unit.unitState == 1 && unit.isDead != 1).Cast<Enemy>().ToList();
+    List<Friendly> friendlyUnits => allUnits.Where(unit => unit.unitType == UnitType.Friendly && !unit.isDead).Cast<Friendly>().ToList();
+    List<Enemy> enemyUnits => allUnits.Where(unit => unit.unitType == UnitType.Enemy && !unit.isDead).Cast<Enemy>().ToList();
 
     int currentFriendlyIndex = 0;
     int currentEnemyIndex = 0;

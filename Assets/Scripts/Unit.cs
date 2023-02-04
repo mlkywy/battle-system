@@ -10,14 +10,14 @@ public class Unit : MonoBehaviour
     public string unitName;
 
     /// <summary>
-    /// The unit's state. (0 - friendly, 1 - enemy)
+    /// Determines the unit type. (Friendly, Enemy)
     /// </summary>
-    public int unitState;
+    public UnitType unitType;
 
     /// <summary>
-    /// The unit's state. (0 - alive, 1 - dead)
+    /// Determines whether the unit is dead or alive.
     /// </summary>
-    public int isDead;
+    public bool isDead;
 
     /// <summary>
     /// The unit's current level.

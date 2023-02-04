@@ -887,8 +887,7 @@ PrefabInstance:
       propertyPath: friendlies.Array.data[1]
       value: 
       objectReference: {fileID: 603888730}
-    m_RemovedComponents:
-    - {fileID: 3008180039489861271, guid: 29815df91872f4d2baa662f3751cb2c8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29815df91872f4d2baa662f3751cb2c8, type: 3}
 --- !u!1001 &8591900127728201609
 PrefabInstance:

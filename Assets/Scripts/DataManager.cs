@@ -13,8 +13,6 @@ public class DataManager : MonoBehaviour
     {
         { "Friendly1", new Dictionary<string, int> 
             { 
-                { "unitState", 0 }, 
-                { "isDead", 0 },
                 { "level", 2 }, 
                 { "maxHp", 200 }, 
                 { "currentHp", 200 }, 
@@ -34,8 +32,6 @@ public class DataManager : MonoBehaviour
         },
         { "Friendly2", new Dictionary<string, int> 
             { 
-                { "unitState", 0 }, 
-                { "isDead", 0 },
                 { "level", 2 }, 
                 { "maxHp", 170 }, 
                 { "currentHp", 170 }, 
