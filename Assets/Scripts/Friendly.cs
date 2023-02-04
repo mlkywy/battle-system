@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class Friendly : Unit
 {
+    /// <summary>
+    /// The friendly's maximum limit gauge points.
+    /// </summary>
+    public int maxLimit;
+
+    /// <summary>
+    /// The friendly's current limit gauge points.
+    /// </summary>
+    public int currentLimit;
+
+    /// <summary>
+    /// The experience points needed to level the friendly up.
+    /// </summary>
+    public int expToNextLevel;
+
+    /// <summary>
+    /// The friendly's current experience points.
+    /// </summary>
+    public int currentExp;
+
     private void Start()
     {
        SetData();
@@ -31,6 +51,10 @@ public class Friendly : Unit
             luck = stats["luck"];
             physicalDefense = stats["physicalDefense"];
             magicDefense = stats["magicDefense"];
+            maxLimit = stats["maxLimit"];
+            currentLimit = stats["currentLimit"];
+            expToNextLevel = stats["expToNextLevel"];
+            currentExp = stats["currentExp"];
         }
         else
         {
@@ -68,6 +92,10 @@ public class Friendly : Unit
             { "luck", luck },
             { "physicalDefense", physicalDefense },
             { "magicDefense", magicDefense },
+            { "maxLimit", maxLimit },
+            { "currentLimit", currentLimit },
+            { "expToNextLevel", expToNextLevel },
+            { "currentExp", currentExp },
         };
 
         if (spells.Count > 0)

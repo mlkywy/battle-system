@@ -27,7 +27,11 @@ public class DataManager : MonoBehaviour
                 { "agility", 50 }, 
                 { "luck", 10 },
                 { "physicalDefense", 45 },
-                { "magicDefense", 10 }
+                { "magicDefense", 10 },
+                { "maxLimit", 1000 },
+                { "currentLimit", 0 },
+                { "expToNextLevel", 100 },
+                { "currentExp", 0 },
             } 
         },
         { "Friendly2", new Dictionary<string, int> 
@@ -46,7 +50,11 @@ public class DataManager : MonoBehaviour
                 { "agility", 100 }, 
                 { "luck", 20 },
                 { "physicalDefense", 25 },
-                { "magicDefense", 35 }
+                { "magicDefense", 35 },
+                { "maxLimit", 1000 },
+                { "currentLimit", 0 },
+                { "expToNextLevel", 100 },
+                { "currentExp", 0 },
             } 
         }
     };
