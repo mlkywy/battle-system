@@ -15,6 +15,8 @@ public class BattleManagerTest : MonoBehaviour
     int currentFriendlyIndex = 0;
     int currentEnemyIndex = 0;
 
+    Dictionary<int, int> defenseBoostDict = new Dictionary<int, int>();
+
     void Start()
     {
         
@@ -37,6 +39,16 @@ public class BattleManagerTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             Heal();
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Defend();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetDefense();
         }
     }
 
@@ -66,6 +78,40 @@ public class BattleManagerTest : MonoBehaviour
         friendly2.currentHp += healing;
 
         Debug.Log($"Healed party member by {healing}!");
+    }
+
+    void Defend()
+    {
+        Friendly friendly1 = friendlyUnits[0];
+
+        if (!defenseBoostDict.ContainsKey(friendly1.unitId))
+        {
+            int defenseBoost = BattleMath.CalculateDefenseAmount(friendly1);
+            friendly1.physicalDefense += defenseBoost;
+            friendly1.magicDefense += defenseBoost;
+
+            defenseBoostDict.Add(friendly1.unitId, defenseBoost);
+        
+            Debug.Log($"Phys and magic defense increased by {defenseBoost}!");
+        }
+
+        Debug.Log($"Defense is already increased!");
+    }
+
+    void ResetDefense()
+    {
+        Friendly friendly1 = friendlyUnits[0];
+
+        if (defenseBoostDict.TryGetValue(friendly1.unitId, out var defenseBoost))
+        {
+            friendly1.physicalDefense -= defenseBoost;
+            friendly1.magicDefense -= defenseBoost;
+            defenseBoostDict.Remove(friendly1.unitId);
+
+            Debug.Log($"Defense stats reset!");
+        }
+
+        Debug.Log($"Nothing to reset!");
     }
 
     void Attack()

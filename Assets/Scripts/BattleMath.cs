@@ -15,6 +15,20 @@ public static class BattleMath
     }
 
     /// <summary>
+    /// Increases a unit's defense stats.
+    /// </summary>
+    public static int CalculateDefenseAmount(Unit unit)
+    {
+        float defenseBoost = (unit.physicalDefense + unit.magicDefense) / 2;
+
+        float randMultiplier = UnityEngine.Random.value;
+        float hpMultiplier = (float) unit.currentHp / unit.maxHp;
+        
+        defenseBoost *= (1 + randMultiplier + (1 - hpMultiplier));
+        return (int) defenseBoost;
+    }
+
+    /// <summary>
     /// Calculates the physical damage output of a basic attack based on the current attacker's stats and the current opponent's stats.
     /// </summary>
     public static int CalculateBasicAttackDamage(Unit attacker, Unit opponent)

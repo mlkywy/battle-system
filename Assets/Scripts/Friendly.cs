@@ -34,7 +34,7 @@ public class Friendly : Unit
     /// </summary>
     private void SetData()
     {
-        if (DataManager.instance.startingStats.TryGetValue(unitName, out var stats))
+        if (DataManager.instance.startingStats.TryGetValue(unitId, out var stats))
         {
             level = stats["level"];
             maxHp = stats["maxHp"];
@@ -61,7 +61,7 @@ public class Friendly : Unit
             Debug.Log("This unit does not exist in the dictionary for stats!");
         }
 
-        if (DataManager.instance.startingSpells.TryGetValue(unitName, out var spellObjects))
+        if (DataManager.instance.startingSpells.TryGetValue(unitId, out var spellObjects))
         {
             if (spellObjects.Count > 0)
             {
@@ -101,9 +101,9 @@ public class Friendly : Unit
         if (spells.Count > 0)
         {
             var spellObjects = spells;
-            DataManager.instance.startingSpells[unitName] = spellObjects;
+            DataManager.instance.startingSpells[unitId] = spellObjects;
         }
     
-        DataManager.instance.startingStats[unitName] = stats;
+        DataManager.instance.startingStats[unitId] = stats;
     }
 }

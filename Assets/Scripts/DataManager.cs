@@ -9,9 +9,9 @@ public class DataManager : MonoBehaviour
     /// <summary>
     /// Contains the base stats of each of unit and keeps tracks of their changes.
     /// </summary>
-    public Dictionary<string, Dictionary<string, int>> startingStats = new Dictionary<string, Dictionary<string, int>>
+    public Dictionary<int, Dictionary<string, int>> startingStats = new Dictionary<int, Dictionary<string, int>>
     {
-        { "Friendly1", new Dictionary<string, int> 
+        { 0, new Dictionary<string, int> 
             { 
                 { "level", 2 }, 
                 { "maxHp", 200 }, 
@@ -34,7 +34,7 @@ public class DataManager : MonoBehaviour
                 { "currentExp", 0 },
             } 
         },
-        { "Friendly2", new Dictionary<string, int> 
+        { 1, new Dictionary<string, int> 
             { 
                 { "level", 2 }, 
                 { "maxHp", 170 }, 
@@ -62,10 +62,10 @@ public class DataManager : MonoBehaviour
     /// <summary>
     /// Contains the abilities of each unit and keeps track of changes such as adding/removing spells.
     /// </summary>
-    public Dictionary<string, List<SpellObject>> startingSpells = new Dictionary<string, List<SpellObject>>
+    public Dictionary<int, List<SpellObject>> startingSpells = new Dictionary<int, List<SpellObject>>
     {
-        { "Friendly1", new List<SpellObject>() },
-        { "Friendly2", new List<SpellObject>() }
+        { 0, new List<SpellObject>() },
+        { 1, new List<SpellObject>() }
     };
 
     private void Awake()

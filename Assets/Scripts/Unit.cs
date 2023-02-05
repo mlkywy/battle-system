@@ -5,6 +5,11 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     /// <summary>
+    /// The unit's ID.
+    /// </summary>
+    public int unitId;
+
+    /// <summary>
     /// The unit's name.
     /// </summary>
     public string unitName;
