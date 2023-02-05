@@ -118,8 +118,6 @@ public static class BattleMath
         {
             while (friendly.currentExp + totalExp >= friendly.expToNextLevel)
             {
-                friendly.currentExp -= friendly.expToNextLevel;
-                friendly.level++;
                 LevelUp(friendly);
             }
 
@@ -133,71 +131,32 @@ public static class BattleMath
     private static void LevelUp(Friendly friendly)
     {
         float level = friendly.level;
+        float expToNextLevel = friendly.expToNextLevel;
 
-        friendly.maxHp += (int) (StatsPerLevel.hpPerLevel + level / 5f);
+        friendly.currentExp -= friendly.expToNextLevel;
+        friendly.level++;
+
+        friendly.maxHp += (int) (StatsPerLevel.hpPerLevel + (level / 5f));
         friendly.currentHp = friendly.maxHp;
 
-        friendly.maxSp += (int) (StatsPerLevel.spPerLevel + level / 5f);
+        friendly.maxSp += (int) (StatsPerLevel.spPerLevel + (level / 5f));
         friendly.currentMp = friendly.maxMp;
 
-        friendly.maxMp += (int) (StatsPerLevel.mpPerLevel + level / 5f);
+        friendly.maxMp += (int) (StatsPerLevel.mpPerLevel + (level / 5f));
         friendly.currentSp = friendly.maxSp;
 
-        friendly.strength += (int) (StatsPerLevel.strengthPerLevel + level / 5f);
-        friendly.intelligence += (int) (StatsPerLevel.intPerLevel + level / 10f);
-        friendly.agility += (int) (StatsPerLevel.agilityPerLevel + level / 10f);
-        friendly.luck += (int) (StatsPerLevel.luckPerLevel + level / 20f);
-        friendly.physicalAttackPower += (int)( StatsPerLevel.physAttackPowerPerLevel + level / 10f);
-        friendly.physicalDefense += (int) (StatsPerLevel.physDefensePerLevel + level / 10f);
-        friendly.magicAttackPower += (int) (StatsPerLevel.magicAttackPowerPerLevel + level / 10f);
-        friendly.magicDefense += (int) (StatsPerLevel.magicDefensePerLevel + level / 10f);
+        friendly.strength += (int) (StatsPerLevel.strengthPerLevel + (level / 10f));
+        friendly.intelligence += (int) (StatsPerLevel.intPerLevel + (level / 10f));
+        friendly.agility += (int) (StatsPerLevel.agilityPerLevel + (level / 10f));
 
-        friendly.expToNextLevel *= (int) StatsPerLevel.experienceMultiplier;
-    }
+        friendly.luck += (int) (StatsPerLevel.luckPerLevel + (level / 20f));
 
-    public static void LevelUpParty(List<Friendly> friendlyUnits, List<Enemy> enemyUnits)
-    {
-        int totalExp = 0;
-        foreach (Enemy enemy in enemyUnits)
-        {
-            totalExp += enemy.expGiven;
-        }
+        friendly.physicalAttackPower += (int) (StatsPerLevel.physAttackPowerPerLevel + (level / 10f));
+        friendly.physicalDefense += (int) (StatsPerLevel.physDefensePerLevel + (level / 10f));
+        friendly.magicAttackPower += (int) (StatsPerLevel.magicAttackPowerPerLevel + (level / 10f));
+        friendly.magicDefense += (int) (StatsPerLevel.magicDefensePerLevel + (level / 10f));
 
-        foreach (Friendly friendly in friendlyUnits)
-        {
-            while (friendly.currentExp + totalExp >= friendly.expToNextLevel)
-            {
-                float level = friendly.level;
-                float expToNextLevel = friendly.expToNextLevel;
-
-                friendly.currentExp -= friendly.expToNextLevel;
-                friendly.level++;
-
-                friendly.maxHp += (int) (StatsPerLevel.hpPerLevel + (level / 5f));
-                friendly.currentHp = friendly.maxHp;
-
-                friendly.maxSp += (int) (StatsPerLevel.spPerLevel + (level / 5f));
-                friendly.currentMp = friendly.maxMp;
-
-                friendly.maxMp += (int) (StatsPerLevel.mpPerLevel + (level / 5f));
-                friendly.currentSp = friendly.maxSp;
-
-                friendly.strength += (int) (StatsPerLevel.strengthPerLevel + (level / 10f));
-                friendly.intelligence += (int) (StatsPerLevel.intPerLevel + (level / 10f));
-                friendly.agility += (int) (StatsPerLevel.agilityPerLevel + (level / 10f));
-
-                friendly.luck += (int) (StatsPerLevel.luckPerLevel + (level / 20f));
-
-                friendly.physicalAttackPower += (int) (StatsPerLevel.physAttackPowerPerLevel + (level / 10f));
-                friendly.physicalDefense += (int) (StatsPerLevel.physDefensePerLevel + (level / 10f));
-                friendly.magicAttackPower += (int) (StatsPerLevel.magicAttackPowerPerLevel + (level / 10f));
-                friendly.magicDefense += (int) (StatsPerLevel.magicDefensePerLevel + (level / 10f));
-
-                expToNextLevel *= StatsPerLevel.experienceMultiplier;
-                friendly.expToNextLevel = (int) expToNextLevel;
-            }
-
-            friendly.currentExp += totalExp;
-        }
+        expToNextLevel *= StatsPerLevel.experienceMultiplier;
+        friendly.expToNextLevel = (int) expToNextLevel;
     }
 }

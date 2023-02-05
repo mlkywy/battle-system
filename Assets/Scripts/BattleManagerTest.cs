@@ -80,7 +80,7 @@ public class BattleManagerTest : MonoBehaviour
             if (enemy1.currentHp <= 0)
             {
                 Debug.Log("You win!");
-                BattleMath.LevelUpParty(friendlyUnits, enemyUnits);
+                BattleMath.EarnExperience(friendlyUnits, enemyUnits);
             }
         }
     }
