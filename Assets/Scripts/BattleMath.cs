@@ -108,6 +108,23 @@ public static class BattleMath
     }
 
     /// <summary>
+    /// Calculates the magical healing output of a spell based on the current healer's stats and the current target's stats.
+    /// </summary>
+    public static int CalculateSpellHealing(Unit healer, Unit target, SpellObject spell)
+    {  
+        float healing = 0;
+        float baseHealing = healer.magicAttackPower + healer.intelligence + spell.spellPower;
+
+        float randVariance = UnityEngine.Random.value;
+        float magicBoostChance = healer.luck / 100f;
+
+        baseHealing *= (float) (1 + (randVariance - 0.5) * magicBoostChance); // Add random variance to the base healing
+        healing = baseHealing;
+
+        return (int) healing;
+    }
+
+    /// <summary>
     /// Awards experience to friendly units and levels them up as neccessary.
     /// </summary>
     public static void EarnExperience(List<Friendly> friendlyUnits, List<Enemy> enemyUnits)

@@ -33,6 +33,11 @@ public class BattleManagerTest : MonoBehaviour
         {
             DamageTaken();
         }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            Heal();
+        }
     }
 
     bool CheckLists() 
@@ -52,6 +57,17 @@ public class BattleManagerTest : MonoBehaviour
         return true;
     }
 
+    void Heal()
+    {
+        Friendly friendly1 = friendlyUnits[0];
+        Friendly friendly2 = friendlyUnits[1];
+
+        int healing = BattleMath.CalculateSpellHealing(friendly1, friendly2, friendly1.spells[1]);
+        friendly2.currentHp += healing;
+
+        Debug.Log($"Healed party member by {healing}!");
+    }
+
     void Attack()
     {
         if (CheckLists())
@@ -65,7 +81,7 @@ public class BattleManagerTest : MonoBehaviour
 
             if (enemy1.currentHp > 0)
             {
-                enemy1.currentHp = enemy1.currentHp - damage;
+                enemy1.currentHp -= damage;
             }
             else
             {
@@ -99,7 +115,7 @@ public class BattleManagerTest : MonoBehaviour
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
             int damage = BattleMath.CalculateBasicAttackDamage(enemy1, friendly1);
-            friendly1.currentHp = friendly1.currentHp - damage;
+            friendly1.currentHp -= damage;
 
             Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");
         }
