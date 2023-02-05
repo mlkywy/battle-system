@@ -22,20 +22,20 @@ public class BattleManagerTest : MonoBehaviour
 
     void Update()
     {
-        TestSwitchingScenes();
+        SwitchingScenes();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TestAttack();
+            Attack();
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            TestDamageTaken();
+            DamageTaken();
         }
     }
 
-    bool TestCheckLists() 
+    bool CheckLists() 
     {
         if (friendlyUnits.Count == 0 || friendlyUnits == null)
         {
@@ -52,9 +52,9 @@ public class BattleManagerTest : MonoBehaviour
         return true;
     }
 
-    void TestAttack()
+    void Attack()
     {
-        if (TestCheckLists())
+        if (CheckLists())
         {
             Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
@@ -66,6 +66,11 @@ public class BattleManagerTest : MonoBehaviour
             if (enemy1.currentHp > 0)
             {
                 enemy1.currentHp = enemy1.currentHp - damage;
+            }
+            else
+            {
+                Debug.Log("This enemy is dead!");
+                return;
             }
 
             if (damage >= 0)
@@ -79,15 +84,16 @@ public class BattleManagerTest : MonoBehaviour
 
             if (enemy1.currentHp <= 0)
             {
+                enemy1.isDead = true;
                 Debug.Log("You win!");
                 BattleMath.EarnExperience(friendlyUnits, enemyUnits);
             }
         }
     }
 
-    void TestDamageTaken()
+    void DamageTaken()
     {
-        if (TestCheckLists())
+        if (CheckLists())
         {
             Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
@@ -99,7 +105,7 @@ public class BattleManagerTest : MonoBehaviour
         }
     }
 
-    void TestSwitchingScenes()
+    void SwitchingScenes()
     {
         if (friendlyUnits.Count == 0 || friendlyUnits == null)
         {
