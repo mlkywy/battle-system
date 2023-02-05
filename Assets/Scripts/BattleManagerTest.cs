@@ -17,7 +17,7 @@ public class BattleManagerTest : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -58,10 +58,15 @@ public class BattleManagerTest : MonoBehaviour
         {
             Friendly friendly1 = friendlyUnits[currentFriendlyIndex];
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
+            Debug.Log("Exp given: " + enemy1.expGiven);
 
             // int damage = BattleMath.CalculateBasicAttackDamage(friendly1, enemy1);
             int damage = BattleMath.CalculateSpellDamage(friendly1, enemy1, friendly1.spells[0]);
-            enemy1.currentHp = enemy1.currentHp - damage;
+
+            if (enemy1.currentHp > 0)
+            {
+                enemy1.currentHp = enemy1.currentHp - damage;
+            }
 
             if (damage >= 0)
             {
@@ -70,6 +75,12 @@ public class BattleManagerTest : MonoBehaviour
             else
             {
                 Debug.Log($"{damage} ENEMY HEALTH HEALED!");
+            }
+
+            if (enemy1.currentHp <= 0)
+            {
+                Debug.Log("You win!");
+                BattleMath.LevelUpParty(friendlyUnits, enemyUnits);
             }
         }
     }
