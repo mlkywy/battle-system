@@ -20,11 +20,11 @@ public static class BattleMath
     public static int CalculateDefenseAmount(Unit unit)
     {
         float defenseBoost = (unit.physicalDefense + unit.magicDefense) / 2;
-
         float randMultiplier = UnityEngine.Random.value;
         float hpMultiplier = (float) unit.currentHp / unit.maxHp;
         
         defenseBoost *= (1 + randMultiplier + (1 - hpMultiplier));
+
         return (int) defenseBoost;
     }
 
@@ -101,16 +101,18 @@ public static class BattleMath
                 Debug.Log($"Opponent is immune to {spell.elementType}!");
 
                 damage = Math.Abs(baseDamage) * -1;
+                
                 return (int) damage; // Spell healed the opponent!
             }
 
             if (enemy.weaknesses.Contains(spell.elementType))
             {
                 Debug.Log($"Opponent is weak to {spell.elementType}!");
-
+                
                 damage = baseDamage * magicBoostMultiplier;
                 int reducedDefense = opponent.magicDefense / 2; // Reduce opponent's magic defense stat by half
                 damage -= (float) reducedDefense / 100 * damage; // Apply damage reduction based on opponent's reduced defense stat
+                
                 return (int) damage; 
             }
         }
