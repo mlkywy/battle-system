@@ -48,7 +48,7 @@ public static class BattleMath
         {
             Debug.Log("Attack missed!");
 
-            return Convert.ToInt32(damage); // Attack missed!
+            return (int) damage; // Attack missed!
         } 
 
         baseDamage *= (float) (1 + (randVariance - 0.5) * criticalHitChance); // Add random variance to the base damage
@@ -66,7 +66,7 @@ public static class BattleMath
 
         damage -= (float) opponent.physicalDefense / 100 * damage; // Apply damage reduction based on opponent's physical defense stat
         
-        return Convert.ToInt32(damage);
+        return (int) damage;
     }
 
     /// <summary>
