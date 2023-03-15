@@ -246,7 +246,6 @@ GameObject:
   - component: {fileID: 1673887373}
   - component: {fileID: 1673887372}
   - component: {fileID: 1673887375}
-  - component: {fileID: 1673887377}
   - component: {fileID: 1673887376}
   m_Layer: 0
   m_Name: Player
@@ -381,56 +380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fc3a4d2fa854c41ae6cd878b7d4103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1673887377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673887371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 566267ecf665f49f39d01c23e2b4b0c8, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1673887376}
-        m_TargetAssemblyTypeName: InputSystem, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a958c25d-9d1a-4779-94da-fa63d15f9030
-    m_ActionName: PlayerMovement/Jump[/Keyboard/upArrow,/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1c505db0-7478-44b9-a7db-819deadecabe
-    m_ActionName: PlayerMovement/Walk[/Keyboard/leftArrow,/Keyboard/rightArrow]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerMovement
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &2090628025
 GameObject:
   m_ObjectHideFlags: 0
