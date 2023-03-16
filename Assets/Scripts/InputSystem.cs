@@ -10,7 +10,9 @@ public class InputSystem : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private bool isGrounded = true;
-    private float speed = 5f;
+    
+    private float jumpSpeed = 10f;
+    private float walkSpeed = 300f;
 
     private void Awake()
     {
@@ -27,12 +29,23 @@ public class InputSystem : MonoBehaviour
         Movement();
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    /// <summary>
+    /// Handles player walking movement.
+    /// </summary>
+    private void Movement()
+    {
+        Vector2 inputVector = playerInputActions.PlayerMovement.Movement.ReadValue<Vector2>();
+        player.velocity = new Vector2(inputVector.x * walkSpeed * Time.deltaTime, player.velocity.y);
+    }
+
+    /// <summary>
+    /// Handles player jumping movement.
+    /// </summary>
+    private void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded)
         {
-            Debug.Log("Jumping!");
-            player.AddForce(Vector3.up * speed, ForceMode2D.Impulse);
+            player.AddForce(Vector3.up * jumpSpeed, ForceMode2D.Impulse);
         }
     }
 
@@ -44,11 +57,5 @@ public class InputSystem : MonoBehaviour
     private void OnCollisionExit2D(Collision2D ground) 
     {
         isGrounded = false;
-    }
-
-    public void Movement()
-    {
-        Vector2 inputVector = playerInputActions.PlayerMovement.Movement.ReadValue<Vector2>();
-        player.AddForce(new Vector3(inputVector.x, 0, inputVector.y), ForceMode2D.Impulse);
     }
 }
