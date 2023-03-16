@@ -31,13 +31,13 @@ public class Friendly : Unit
 
     private void Start()
     {
-       SetData();
+       LoadData();
     }
 
     /// <summary>
     /// Sets the unit's current stats based on the data in the DataManager.
     /// </summary>
-    private void SetData()
+    private void LoadData()
     {
         if (DataManager.instance.startingStats.TryGetValue(unitId, out var stats))
         {
@@ -66,28 +66,19 @@ public class Friendly : Unit
             Debug.Log("This unit does not exist in the dictionary for stats!");
         }
 
-        if (DataManager.instance.spells.TryGetValue(unitId, out var spellObjects))
+        if (DataManager.instance.spells.TryGetValue(unitId, out var spells))
         {
-            if (spellObjects.Count > 0)
-            {
-                spells = spellObjects;
-            }
+            DataManager.instance.spells[unitId] = spells;
         }
 
-        if (DataManager.instance.skills.TryGetValue(unitId, out var skillObjects))
+        if (DataManager.instance.skills.TryGetValue(unitId, out var skills))
         {
-            if (skillObjects.Count > 0)
-            {
-                skills = skillObjects;
-            }
+            DataManager.instance.skills[unitId] = skills;
         }
 
-        if (DataManager.instance.specials.TryGetValue(unitId, out var specialObjects))
+        if (DataManager.instance.specials.TryGetValue(unitId, out var specials))
         {
-            if (specialObjects.Count > 0)
-            {
-                specials = specialObjects;
-            }
+            DataManager.instance.specials[unitId] = specials;
         }
     }
 
@@ -118,25 +109,11 @@ public class Friendly : Unit
             { "expToNextLevel", expToNextLevel },
             { "currentExp", currentExp },
         };
-
-        if (spells.Count > 0)
-        {
-            var spellObjects = spells;
-            DataManager.instance.spells[unitId] = spellObjects;
-        }
-
-        if (skills.Count > 0)
-        {
-            var skillObjects = skills;
-            DataManager.instance.skills[unitId] = skillObjects;
-        }
-
-        if (specials.Count > 0)
-        {
-            var specialObjects = specials;
-            DataManager.instance.specials[unitId] = specialObjects;
-        }
     
         DataManager.instance.startingStats[unitId] = stats;
+
+        DataManager.instance.spells[unitId] =  spells;
+        DataManager.instance.skills[unitId] = skills;
+        DataManager.instance.specials[unitId] = specials;
     }
 }
