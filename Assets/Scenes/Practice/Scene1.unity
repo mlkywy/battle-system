@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: level
-      value: 2
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: maxHp
@@ -660,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: physicalAttackPower
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7067650481858244891, guid: c03538299725a4547b69c905224555ed, type: 3}
       propertyPath: immunities.Array.size

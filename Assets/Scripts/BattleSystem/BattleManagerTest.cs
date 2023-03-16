@@ -174,10 +174,10 @@ public class BattleManagerTest : MonoBehaviour
             {
                 friendly1.currentHp -= damage;
 
-                int powerGaugeIncrease = BattleMath.CalculatePowerGaugeAmount(friendly1, damage);
+                int powerGaugeIncrease = BattleMath.CalculatePowerGaugeAmount(friendly1, enemy1, damage);
                 friendly1.currentPower += powerGaugeIncrease;
 
-                Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");
+                Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY! {powerGaugeIncrease} added to power gauge!");
             }
             else
             {
