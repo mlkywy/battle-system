@@ -79,13 +79,13 @@ public class BattleManagerTest : MonoBehaviour
         if (healing > friendly1.maxHp - friendly1.currentHp)
         {
             friendly1.currentHp = friendly1.maxHp;
+            Debug.Log($"Health fully restored!");
         }
         else
         {
             friendly1.currentHp += healing;
+            Debug.Log($"Healed party member by {healing}!");
         }
-        
-        Debug.Log($"Healed party member by {healing}!");
     }
 
     void Defend()
