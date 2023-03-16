@@ -74,9 +74,17 @@ public class BattleManagerTest : MonoBehaviour
         Friendly friendly1 = friendlyUnits[0];
         Friendly friendly2 = friendlyUnits[1];
 
-        int healing = BattleMath.CalculateSpellHealing(friendly1, friendly2, friendly1.spells[1]);
-        friendly2.currentHp += healing;
+        int healing = BattleMath.CalculateSpellHealing(friendly1, friendly1, friendly1.spells[1]);
 
+        if (healing > friendly1.maxHp - friendly1.currentHp)
+        {
+            friendly1.currentHp = friendly1.maxHp;
+        }
+        else
+        {
+            friendly1.currentHp += healing;
+        }
+        
         Debug.Log($"Healed party member by {healing}!");
     }
 
@@ -122,8 +130,8 @@ public class BattleManagerTest : MonoBehaviour
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
             Debug.Log("Exp given: " + enemy1.expGiven);
 
-            // int damage = BattleMath.CalculateBasicAttackDamage(friendly1, enemy1);
-            int damage = BattleMath.CalculateSpellDamage(friendly1, enemy1, friendly1.spells[0]);
+            int damage = BattleMath.CalculateBasicAttackDamage(friendly1, enemy1);
+            // int damage = BattleMath.CalculateSpellDamage(friendly1, enemy1, friendly1.spells[0]);
 
             if (enemy1.currentHp > 0)
             {
@@ -161,9 +169,21 @@ public class BattleManagerTest : MonoBehaviour
             Enemy enemy1 = enemyUnits[currentEnemyIndex];
 
             int damage = BattleMath.CalculateBasicAttackDamage(enemy1, friendly1);
-            friendly1.currentHp -= damage;
 
-            Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");
+            if (friendly1.currentHp > 0)
+            {
+                friendly1.currentHp -= damage;
+
+                int powerGaugeIncrease = BattleMath.CalculatePowerGaugeAmount(friendly1, damage);
+                friendly1.currentPower += powerGaugeIncrease;
+
+                Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");
+            }
+            else
+            {
+                Debug.Log("This character is dead!");
+                return;
+            }
         }
     }
 

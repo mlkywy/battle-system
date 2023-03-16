@@ -140,6 +140,19 @@ public static class BattleMath
         return (int) healing;
     }
 
+    public static int CalculatePowerGaugeAmount(Unit friendly, int damageTaken)
+    {
+        float healthPercentage = (float) friendly.currentHp / friendly.maxHp;
+
+        // Calculate the base power gauge increase based on damage taken
+        int baseAmount = (int) Mathf.Clamp(damageTaken, 0, friendly.maxHp);
+
+        // Multiply the base power gauge increase by the health percentage
+        int amountIncrease = (int) (baseAmount * (1 + healthPercentage));
+
+        return amountIncrease;
+    }
+
     /// <summary>
     /// Awards experience to friendly units and levels them up as neccessary.
     /// </summary>

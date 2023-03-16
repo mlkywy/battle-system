@@ -5,14 +5,14 @@ using UnityEngine;
 public class Friendly : Unit
 {
     /// <summary>
-    /// The friendly's maximum limit gauge points.
+    /// The friendly's maximum power gauge points.
     /// </summary>
-    public int maxLimit;
+    public int maxPower;
 
     /// <summary>
-    /// The friendly's current limit gauge points.
+    /// The friendly's current power gauge points.
     /// </summary>
-    public int currentLimit;
+    public int currentPower;
 
     /// <summary>
     /// The experience points needed to level the friendly up.
@@ -51,8 +51,8 @@ public class Friendly : Unit
             luck = stats["luck"];
             physicalDefense = stats["physicalDefense"];
             magicDefense = stats["magicDefense"];
-            maxLimit = stats["maxLimit"];
-            currentLimit = stats["currentLimit"];
+            maxPower = stats["maxPower"];
+            currentPower = stats["currentPower"];
             expToNextLevel = stats["expToNextLevel"];
             currentExp = stats["currentExp"];
         }
@@ -92,8 +92,8 @@ public class Friendly : Unit
             { "luck", luck },
             { "physicalDefense", physicalDefense },
             { "magicDefense", magicDefense },
-            { "maxLimit", maxLimit },
-            { "currentLimit", currentLimit },
+            { "maxPower", maxPower },
+            { "currentPower", currentPower },
             { "expToNextLevel", expToNextLevel },
             { "currentExp", currentExp },
         };

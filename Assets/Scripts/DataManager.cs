@@ -28,8 +28,8 @@ public class DataManager : MonoBehaviour
                 { "luck", 10 },
                 { "physicalDefense", 45 },
                 { "magicDefense", 10 },
-                { "maxLimit", 1000 },
-                { "currentLimit", 0 },
+                { "maxPower", 1000 },
+                { "currentPower", 0 },
                 { "expToNextLevel", 100 },
                 { "currentExp", 0 },
             } 
@@ -51,8 +51,8 @@ public class DataManager : MonoBehaviour
                 { "luck", 20 },
                 { "physicalDefense", 25 },
                 { "magicDefense", 35 },
-                { "maxLimit", 1000 },
-                { "currentLimit", 0 },
+                { "maxPower", 1000 },
+                { "currentPower", 0 },
                 { "expToNextLevel", 100 },
                 { "currentExp", 0 },
             } 
