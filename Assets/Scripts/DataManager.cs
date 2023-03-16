@@ -60,12 +60,30 @@ public class DataManager : MonoBehaviour
     };
 
     /// <summary>
-    /// Contains the abilities of each unit and keeps track of changes such as adding/removing spells.
+    /// Contains the spells of each unit and keeps track of changes such as adding/removing spells.
     /// </summary>
-    public Dictionary<int, List<SpellObject>> startingSpells = new Dictionary<int, List<SpellObject>>
+    public Dictionary<int, List<SpellObject>> spells = new Dictionary<int, List<SpellObject>>
     {
         { 0, new List<SpellObject>() },
         { 1, new List<SpellObject>() }
+    };
+
+    /// <summary>
+    /// Contains the skills of each unit and keeps track of changes such as adding/removing skills.
+    /// </summary>
+    public Dictionary<int, List<SkillObject>> skills = new Dictionary<int, List<SkillObject>>
+    {
+        { 0, new List<SkillObject>() },
+        { 1, new List<SkillObject>() }
+    };
+
+    /// <summary>
+    /// Contains the special ability of each unit and keeps track of changes such as adding/removing special abilities.
+    /// </summary>
+    public Dictionary<int, List<SpecialObject>> specials = new Dictionary<int, List<SpecialObject>>
+    {
+        { 0, new List<SpecialObject>() },
+        { 1, new List<SpecialObject>() }
     };
 
     private void Awake()

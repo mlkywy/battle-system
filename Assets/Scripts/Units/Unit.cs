@@ -100,7 +100,12 @@ public class Unit : MonoBehaviour
     public int magicDefense;
 
     /// <summary>
-    /// Contains a list of the unit's abilities that consume MP. They include both special physical attacks and magic spells. Must contain at least one spell.
+    /// Contains a list of the unit's spells that consume MP. Must contain at least one spell.
     /// </summary>
     public List<SpellObject> spells;
+
+    /// <summary>
+    /// Contains a list of the unit's skills that consume SP. Must contain at least one skill.
+    /// </summary>
+    public List<SkillObject> skills;
 }

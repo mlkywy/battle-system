@@ -24,6 +24,11 @@ public class Friendly : Unit
     /// </summary>
     public int currentExp;
 
+    /// <summary>
+    /// Contains a list of the unit's special abilities that can be triggered with a full power gauge. Must contain at least one special abliity.
+    /// </summary>
+    public List<SpecialObject> specials;
+
     private void Start()
     {
        SetData();
@@ -61,11 +66,27 @@ public class Friendly : Unit
             Debug.Log("This unit does not exist in the dictionary for stats!");
         }
 
-        if (DataManager.instance.startingSpells.TryGetValue(unitId, out var spellObjects))
+        if (DataManager.instance.spells.TryGetValue(unitId, out var spellObjects))
         {
             if (spellObjects.Count > 0)
             {
                 spells = spellObjects;
+            }
+        }
+
+        if (DataManager.instance.skills.TryGetValue(unitId, out var skillObjects))
+        {
+            if (skillObjects.Count > 0)
+            {
+                skills = skillObjects;
+            }
+        }
+
+        if (DataManager.instance.specials.TryGetValue(unitId, out var specialObjects))
+        {
+            if (specialObjects.Count > 0)
+            {
+                specials = specialObjects;
             }
         }
     }
@@ -101,7 +122,19 @@ public class Friendly : Unit
         if (spells.Count > 0)
         {
             var spellObjects = spells;
-            DataManager.instance.startingSpells[unitId] = spellObjects;
+            DataManager.instance.spells[unitId] = spellObjects;
+        }
+
+        if (skills.Count > 0)
+        {
+            var skillObjects = skills;
+            DataManager.instance.skills[unitId] = skillObjects;
+        }
+
+        if (specials.Count > 0)
+        {
+            var specialObjects = specials;
+            DataManager.instance.specials[unitId] = specialObjects;
         }
     
         DataManager.instance.startingStats[unitId] = stats;
