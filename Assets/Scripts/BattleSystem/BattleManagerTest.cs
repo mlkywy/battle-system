@@ -175,9 +175,19 @@ public class BattleManagerTest : MonoBehaviour
                 friendly1.currentHp -= damage;
 
                 int powerGaugeIncrease = BattleMath.CalculatePowerGaugeAmount(friendly1, enemy1, damage);
-                friendly1.currentPower += powerGaugeIncrease;
 
-                Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY! {powerGaugeIncrease} added to power gauge!");
+                if (powerGaugeIncrease < friendly1.maxPower - friendly1.currentPower)
+                {
+                    friendly1.currentPower += powerGaugeIncrease;
+                    Debug.Log($"{powerGaugeIncrease} ADDED TO POWER GAUGE!");
+                }
+                else
+                {
+                    friendly1.currentPower = friendly1.maxPower;
+                    Debug.Log("POWER GAUGE FULL!");
+                }
+                
+                Debug.Log($"{damage} DAMAGE TAKEN BY ENEMY!");
             }
             else
             {
