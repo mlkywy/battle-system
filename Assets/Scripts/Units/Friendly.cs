@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Friendly : Unit
@@ -31,7 +32,7 @@ public class Friendly : Unit
 
     private void Start()
     {
-       LoadData();
+        LoadData();
     }
 
     /// <summary>
@@ -66,21 +67,12 @@ public class Friendly : Unit
             Debug.Log("This unit does not exist in the dictionary for stats!");
         }
 
-        if (DataManager.instance.spells.TryGetValue(unitId, out var spells))
+        if (spells.Count > 0)
         {
             DataManager.instance.spells[unitId] = spells;
         }
-
-        if (DataManager.instance.skills.TryGetValue(unitId, out var skills))
-        {
-            DataManager.instance.skills[unitId] = skills;
-        }
-
-        if (DataManager.instance.specials.TryGetValue(unitId, out var specials))
-        {
-            DataManager.instance.specials[unitId] = specials;
-        }
     }
+
 
     /// <summary>
     /// Saves unit's current stats to the DataManager class while saving the game and before scene-switching.
@@ -111,9 +103,6 @@ public class Friendly : Unit
         };
     
         DataManager.instance.startingStats[unitId] = stats;
-
-        DataManager.instance.spells[unitId] =  spells;
-        DataManager.instance.skills[unitId] = skills;
-        DataManager.instance.specials[unitId] = specials;
+        DataManager.instance.spells[unitId] = spells;
     }
 }
