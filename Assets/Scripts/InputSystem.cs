@@ -10,7 +10,7 @@ public class InputSystem : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private bool isGrounded = true;
-    
+
     private float jumpSpeed = 10f;
     private float walkSpeed = 300f;
 
@@ -45,7 +45,7 @@ public class InputSystem : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
-            player.AddForce(Vector3.up * jumpSpeed, ForceMode2D.Impulse);
+            player.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         }
     }
 
