@@ -47,8 +47,8 @@ public static class BattleMath
         if (randDodge < opponentDodgeChance) 
         {
             Debug.Log("Attack missed!");
-
-            return (int) damage; // Attack missed!
+            
+            return (int) damage; 
         } 
 
         baseDamage *= (float) (1 + (randVariance - 0.5) * criticalHitChance); // Add random variance to the base damage
@@ -57,11 +57,11 @@ public static class BattleMath
         {
             Debug.Log("Critical hit!");
 
-            damage = baseDamage * criticalHitMultiplier; // Critical hit!
+            damage = baseDamage * criticalHitMultiplier; 
         } 
         else 
         {
-            damage = baseDamage; // Normal hit!
+            damage = baseDamage;
         }
 
         damage -= (float) opponent.physicalDefense / 100 * damage; // Apply damage reduction based on opponent's physical defense stat
@@ -89,7 +89,7 @@ public static class BattleMath
         {
             Debug.Log("Spell missed!");
 
-            return (int) damage; // Spell missed!
+            return (int) damage;
         } 
 
         baseDamage *= (float) (1 + (randVariance - 0.5) * magicBoostChance); // Add random variance to the base damage
@@ -102,13 +102,13 @@ public static class BattleMath
 
                 damage = Math.Abs(baseDamage) * -1;
                 
-                return (int) damage; // Spell healed the opponent!
+                return (int) damage;
             }
 
             if (enemy.weaknesses.Contains(spell.elementType))
             {
                 Debug.Log($"Opponent is weak to {spell.elementType}!");
-                
+    
                 damage = baseDamage * magicBoostMultiplier;
                 int reducedDefense = opponent.magicDefense / 2; // Reduce opponent's magic defense stat by half
                 damage -= (float) reducedDefense / 100 * damage; // Apply damage reduction based on opponent's reduced defense stat
@@ -140,10 +140,14 @@ public static class BattleMath
         return (int) healing;
     }
 
+    /// <summary>
+    /// Calculate the amount of power to add to the friendly's power gauge based on the damage taken by an enemy.
+    /// </summary>
     public static int CalculatePowerGaugeAmount(Unit friendly, Unit enemy, int damageTaken)
     {
         float healthLostPercentage = (float) damageTaken / friendly.maxHp;
         int powerGaugeIncrease = (int) (healthLostPercentage * 10000) / 2;
+
         return powerGaugeIncrease;
     }
 
