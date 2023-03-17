@@ -67,9 +67,31 @@ public class Friendly : Unit
             Debug.Log("This unit does not exist in the dictionary for stats!");
         }
 
-        if (spells.Count > 0)
+        if (DataManager.instance.spells.TryGetValue(unitId, out var spellList) && spellList.Count > 0)
+        {
+            spells = spellList;
+        }
+        else 
         {
             DataManager.instance.spells[unitId] = spells;
+        }
+
+        if (DataManager.instance.skills.TryGetValue(unitId, out var skillList) && skillList.Count > 0)
+        {
+            skills = skillList;
+        }
+        else 
+        {
+            DataManager.instance.skills[unitId] = skills;
+        }
+
+        if (DataManager.instance.specials.TryGetValue(unitId, out var specialList) && specialList.Count > 0)
+        {
+            specials = specialList;
+        }
+        else 
+        {
+            DataManager.instance.specials[unitId] = specials;
         }
     }
 
@@ -103,6 +125,9 @@ public class Friendly : Unit
         };
     
         DataManager.instance.startingStats[unitId] = stats;
+
         DataManager.instance.spells[unitId] = spells;
+        DataManager.instance.skills[unitId] = skills;
+        DataManager.instance.specials[unitId] = specials;
     }
 }
