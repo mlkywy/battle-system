@@ -65,32 +65,9 @@ public class Friendly : Unit
         expToNextLevel = stats["expToNextLevel"];
         currentExp = stats["currentExp"];
 
-        if (DataManager.instance.spells.TryGetValue(unitId, out var spellList) && spellList.Count > 0)
-        {
-            spells = spellList;
-        }
-        else 
-        {
-            DataManager.instance.spells[unitId] = spells;
-        }
-
-        if (DataManager.instance.skills.TryGetValue(unitId, out var skillList) && skillList.Count > 0)
-        {
-            skills = skillList;
-        }
-        else 
-        {
-            DataManager.instance.skills[unitId] = skills;
-        }
-
-        if (DataManager.instance.specials.TryGetValue(unitId, out var specialList) && specialList.Count > 0)
-        {
-            specials = specialList;
-        }
-        else 
-        {
-            DataManager.instance.specials[unitId] = specials;
-        }
+        spells = LoadList(DataManager.instance.spells, spells, unitId);
+        skills = LoadList(DataManager.instance.skills, skills, unitId);
+        specials = LoadList(DataManager.instance.specials, specials, unitId);
     }
 
 
@@ -127,5 +104,21 @@ public class Friendly : Unit
         DataManager.instance.spells[unitId] = spells;
         DataManager.instance.skills[unitId] = skills;
         DataManager.instance.specials[unitId] = specials;
+    }
+    
+    /// <summary>
+    /// Helper method that returns the list parameter if it exists and has at least one item. Otherwise, it is added to the dictionary and returned. 
+    /// </summary>
+    private List<T> LoadList<T>(Dictionary<int, List<T>> dict, List<T> list, int unitId)
+    {
+        if (dict.TryGetValue(unitId, out var listType) && listType.Count > 0)
+        {
+            return listType;
+        }
+        else 
+        {
+            dict[unitId] = list;
+            return list;
+        }
     }
 }
