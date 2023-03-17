@@ -17,11 +17,6 @@ public class BattleManagerTest : MonoBehaviour
 
     Dictionary<int, int> defenseBoostDict = new Dictionary<int, int>();
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         SwitchingScenes();

@@ -70,7 +70,6 @@ public class Friendly : Unit
         specials = LoadList(DataManager.instance.specials, specials, unitId);
     }
 
-
     /// <summary>
     /// Saves unit's current stats to the DataManager class while saving the game and before scene-switching.
     /// </summary>
