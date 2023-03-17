@@ -13,6 +13,7 @@ public class SkillObject : ScriptableObject
     /// <summary>
     /// The skill's description.
     /// </summary>
+    [TextArea]
     public string skillDescription;
 
     /// <summary>

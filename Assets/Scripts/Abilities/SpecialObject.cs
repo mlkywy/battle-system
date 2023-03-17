@@ -18,6 +18,7 @@ public class SpecialObject : ScriptableObject
     /// <summary>
     /// The special ability's description.
     /// </summary>
+    [TextArea]
     public string specialDescription;
 
     /// <summary>

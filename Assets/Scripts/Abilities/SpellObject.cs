@@ -13,6 +13,7 @@ public class SpellObject : ScriptableObject
     /// <summary>
     /// The spell's description.
     /// </summary>
+    [TextArea]
     public string spellDescription;
 
     /// <summary>

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Healing Spell
   m_EditorClassIdentifier: 
   spellName: Healing Spell
-  spellType: 2
+  spellDescription: A spell that heals.
   elementType: 0
   spellPower: 45
   mpCost: 10

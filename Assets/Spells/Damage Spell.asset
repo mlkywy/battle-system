@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage Spell
   m_EditorClassIdentifier: 
   spellName: Damage Spell
-  spellType: 0
+  spellDescription: A spell that damages.
   elementType: 1
   spellPower: 45
   mpCost: 10
