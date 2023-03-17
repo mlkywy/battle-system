@@ -11,6 +11,11 @@ public class SpellObject : ScriptableObject
     public string spellName;
 
     /// <summary>
+    /// The spell's description.
+    /// </summary>
+    public string spellDescription;
+
+    /// <summary>
     /// The spell's element type. This includes none (no element), ice, fire, lightning, wind, or earth.
     /// </summary>
     public ElementType elementType;

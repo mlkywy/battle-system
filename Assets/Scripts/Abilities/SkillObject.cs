@@ -11,6 +11,11 @@ public class SkillObject : ScriptableObject
     public string skillName;
 
     /// <summary>
+    /// The skill's description.
+    /// </summary>
+    public string skillDescription;
+
+    /// <summary>
     /// The skill's base power. 
     /// </summary>
     public int skillPower;
