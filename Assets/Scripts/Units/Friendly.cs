@@ -40,32 +40,30 @@ public class Friendly : Unit
     /// </summary>
     private void LoadData()
     {
-        if (DataManager.instance.startingStats.TryGetValue(unitId, out var stats))
-        {
-            level = stats["level"];
-            maxHp = stats["maxHp"];
-            currentHp = stats["currentHp"];
-            maxSp = stats["maxSp"];
-            currentSp = stats["currentSp"];
-            maxMp = stats["maxMp"];
-            currentMp = stats["currentMp"];
-            physicalAttackPower = stats["physicalAttackPower"];
-            magicAttackPower = stats["magicAttackPower"];
-            strength = stats["strength"];
-            intelligence = stats["intelligence"];
-            agility = stats["agility"];
-            luck = stats["luck"];
-            physicalDefense = stats["physicalDefense"];
-            magicDefense = stats["magicDefense"];
-            maxPower = stats["maxPower"];
-            currentPower = stats["currentPower"];
-            expToNextLevel = stats["expToNextLevel"];
-            currentExp = stats["currentExp"];
-        }
-        else
+        if (!DataManager.instance.startingStats.TryGetValue(unitId, out var stats))
         {
             Debug.Log("This unit does not exist in the dictionary for stats!");
         }
+
+        level = stats["level"];
+        maxHp = stats["maxHp"];
+        currentHp = stats["currentHp"];
+        maxSp = stats["maxSp"];
+        currentSp = stats["currentSp"];
+        maxMp = stats["maxMp"];
+        currentMp = stats["currentMp"];
+        physicalAttackPower = stats["physicalAttackPower"];
+        magicAttackPower = stats["magicAttackPower"];
+        strength = stats["strength"];
+        intelligence = stats["intelligence"];
+        agility = stats["agility"];
+        luck = stats["luck"];
+        physicalDefense = stats["physicalDefense"];
+        magicDefense = stats["magicDefense"];
+        maxPower = stats["maxPower"];
+        currentPower = stats["currentPower"];
+        expToNextLevel = stats["expToNextLevel"];
+        currentExp = stats["currentExp"];
 
         if (DataManager.instance.spells.TryGetValue(unitId, out var spellList) && spellList.Count > 0)
         {
