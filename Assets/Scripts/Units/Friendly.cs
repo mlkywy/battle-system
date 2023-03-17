@@ -45,25 +45,25 @@ public class Friendly : Unit
             Debug.Log("This unit does not exist in the dictionary for stats!");
         }
 
-        level = stats["level"];
-        maxHp = stats["maxHp"];
-        currentHp = stats["currentHp"];
-        maxSp = stats["maxSp"];
-        currentSp = stats["currentSp"];
-        maxMp = stats["maxMp"];
-        currentMp = stats["currentMp"];
-        physicalAttackPower = stats["physicalAttackPower"];
-        magicAttackPower = stats["magicAttackPower"];
-        strength = stats["strength"];
-        intelligence = stats["intelligence"];
-        agility = stats["agility"];
-        luck = stats["luck"];
-        physicalDefense = stats["physicalDefense"];
-        magicDefense = stats["magicDefense"];
-        maxPower = stats["maxPower"];
-        currentPower = stats["currentPower"];
-        expToNextLevel = stats["expToNextLevel"];
-        currentExp = stats["currentExp"];
+        level = stats[nameof(level)];
+        maxHp = stats[nameof(maxHp)];
+        currentHp = stats[nameof(currentHp)];
+        maxSp = stats[nameof(maxSp)];
+        currentSp = stats[nameof(currentSp)];
+        maxMp = stats[nameof(maxMp)];
+        currentMp = stats[nameof(currentMp)];
+        physicalAttackPower = stats[nameof(physicalAttackPower)];
+        magicAttackPower = stats[nameof(magicAttackPower)];
+        strength = stats[nameof(strength)];
+        intelligence = stats[nameof(intelligence)];
+        agility = stats[nameof(agility)];
+        luck = stats[nameof(luck)];
+        physicalDefense = stats[nameof(physicalDefense)];
+        magicDefense = stats[nameof(magicDefense)];
+        maxPower = stats[nameof(maxPower)];
+        currentPower = stats[nameof(currentPower)];
+        expToNextLevel = stats[nameof(expToNextLevel)];
+        currentExp = stats[nameof(currentExp)];
 
         spells = LoadList(DataManager.instance.spells, spells, unitId);
         skills = LoadList(DataManager.instance.skills, skills, unitId);
@@ -78,25 +78,25 @@ public class Friendly : Unit
     {
         var stats = new Dictionary<string, int>
         {
-            { "level", level }, 
-            { "maxHp", maxHp },
-            { "currentHp", currentHp },
-            { "maxSp", maxSp },
-            { "currentSp", currentSp },
-            { "maxMp", maxMp },
-            { "currentMp", currentMp },
-            { "physicalAttackPower", physicalAttackPower },
-            { "magicAttackPower", magicAttackPower },
-            { "strength", strength }, 
-            { "intelligence", intelligence }, 
-            { "agility", agility }, 
-            { "luck", luck },
-            { "physicalDefense", physicalDefense },
-            { "magicDefense", magicDefense },
-            { "maxPower", maxPower },
-            { "currentPower", currentPower },
-            { "expToNextLevel", expToNextLevel },
-            { "currentExp", currentExp },
+            { nameof(level), level }, 
+            { nameof(maxHp), maxHp },
+            { nameof(currentHp), currentHp },
+            { nameof(maxSp), maxSp },
+            { nameof(currentSp), currentSp },
+            { nameof(maxMp), maxMp },
+            { nameof(currentMp), currentMp },
+            { nameof(physicalAttackPower), physicalAttackPower },
+            { nameof(magicAttackPower), magicAttackPower },
+            { nameof(strength), strength }, 
+            { nameof(intelligence), intelligence }, 
+            { nameof(agility), agility }, 
+            { nameof(luck), luck },
+            { nameof(physicalDefense), physicalDefense },
+            { nameof(magicDefense), magicDefense },
+            { nameof(maxPower), maxPower },
+            { nameof(currentPower), currentPower },
+            { nameof(expToNextLevel), expToNextLevel },
+            { nameof(currentExp), currentExp },
         };
     
         DataManager.instance.startingStats[unitId] = stats;
